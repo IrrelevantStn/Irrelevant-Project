@@ -6,12 +6,13 @@ public abstract class Message {
     private String source;
     private int timestamp;
 
-    public Message(String destination, String source, int timestamp){
+    protected Message(String destination, String source, int timestamp){
         this.destination = destination;
         this.source = destination;
         this.timestamp = timestamp;
 
     }
+    protected abstract void textFormatting(String text);
 
     public String getDestination() {
         return destination;
@@ -25,7 +26,4 @@ public abstract class Message {
         return timestamp;
     }
 
-    abstract void textFormatting();
-
-    abstract void sendMessage();
 }

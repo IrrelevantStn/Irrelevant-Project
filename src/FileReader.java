@@ -1,3 +1,5 @@
+package common;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -61,10 +63,11 @@ public class FileReader {
 			int lastLoginYear = Integer.parseInt(userArray[13]);
 			Calendar last = Calendar.getInstance();
 			last.set(lastLoginDay, lastLoginMonth, lastLoginYear);
+			Date lastLogin = last.getTime();
 			String profImg = userArray[14];
 			
-			Profile temp = new Profile(username,firstName,surname,number,cal,city,
-					numNewMsg,last,profImg,userid,password);
+			Profile temp = new Profile(username,firstName,surname,number,birthday,city,
+					numNewMsg,lastLogin,profImg,userid,password);
 			profileList.add(temp);
 			
 		}
@@ -115,9 +118,15 @@ public class FileReader {
 			
 			String line = m_in.nextLine();
 			String[] lineArray = line.split(",");
+			Boolean isRequest;
+			
+			if (lineArray[2] == "true") {
+				isRequest = true;
+			} else isRequest = false;
+			
 			
 			if (username.equals(lineArray[0])) {
-				contacts.addContact(lineArray[1]);
+				contacts.addContact(lineArray[1],isRequest);
 			}
 			
 		}
@@ -136,28 +145,36 @@ public class FileReader {
 			
 			String msgType = convArray[0];
 			String source = convArray[1];
-			String destination = convArray[2]; //username of profile
-			String timeStamp = convArray[3];   //username of profile
-			String data = convArray[4];
-			String textDesc = convArray[5];
+			String destination = convArray[2];
+			Calendar temp = Calendar.getInstance();
+		
+			int timeStampDay = Integer.parseInt(convArray[3]);
+			int timeStampMonth = Integer.parseInt(convArray[4]);
+			int timeStampYear = Integer.parseInt(convArray[5]);
+			temp.set(timeStampYear, timeStampMonth, timeStampDay);
+			Date timeStamp = temp.getTime();
 			
 			
-			Message temp = new Message();
+			String data = convArray[6];
+			String textDesc = convArray[7];
+			
+			
+			Message msg = null;
 						
 			switch (msgType) {
 				
-			case "url" :    temp = new UrlMessage(source,destination,timeStamp,data,textDesc);
+			case "url" :    msg = new UrlMessage(destination,source,timeStamp,textDesc,data);
 							break;
-			case "text"	:	temp = new TextMessage(source,destination,timeStamp,data,textDesc);
+			case "text"	:	msg = new TextMessage(destination,source,timeStamp,data);
 							break;
-			case "file"	:	temp = new FileMessage(source,destination,timeStamp,data,textDesc);
+			case "file"	:	msg = new FileMessage(destination,source,timeStamp,textDesc,data);
 							break;
 			default		:	break;
 				
 				
 			}
 			
-			conversation.addMessage(temp);
+			conversation.addMessage(msg);
 			
 			
 		}
@@ -179,22 +196,30 @@ public class FileReader {
 		return usernames;
 	}
 
-	public ArrayList<DrawingPalette> readDrawings() {
+	public ArrayList<DrawingPalette> readDrawings(Graph users) {
 
-		ArrayList<DrawingPalette> drawings = new ArrayList<DrawingPalette>();
+		ArrayList<DrawingPalette> drawingList = new ArrayList<DrawingPalette>();
+		DrawingPalette drawing = new DrawingPalette();
 		
-		while(m_in.hasNextLine() == true) {
+		while (m_in.hasNextLine() == true) {
 			
-			String temp = m_in.nextLine();
-			String[] tempArray = temp.split(",");
+			String line = m_in.nextLine();
+			String[] lineArray = line.split(",");
 			
-			//Read in parameters
-			//Put parameters into DrawingPalette constructor
+			String filePath = lineArray[0];
+			ArrayList<Profile> authors = new ArrayList<Profile>();
+			for (int x = 1; x < lineArray.length; x++) {
+				Profile p = users.findProfile(lineArray[x]);
+				authors.add(p);
+			}
 			
-			DrawingPalette drawing = new DrawingPalette();
+			drawing.setFilePath(filePath);
+			drawing.setAuthors(authors);
+			drawingList.add(drawing);
 			
 		}
-		return null;
+		
+		return drawingList;
 	}
 
 }

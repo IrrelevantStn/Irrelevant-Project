@@ -1,17 +1,20 @@
+import java.util.Date;
+
 /**
  * Created by mat on 29/11/16.
  */
 public abstract class Message {
     private String destination;
     private String source;
-    private int timestamp;
+    private Date timestamp;
 
-    public Message(String destination, String source, int timestamp){
+    protected Message(String destination, String source, Date timestamp){
         this.destination = destination;
         this.source = destination;
         this.timestamp = timestamp;
 
     }
+    protected abstract void textFormatting(String text);
 
     public String getDestination() {
         return destination;
@@ -21,11 +24,8 @@ public abstract class Message {
         return source;
     }
 
-    public int getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    abstract void textFormatting();
-
-    abstract void sendMessage();
 }

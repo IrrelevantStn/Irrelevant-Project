@@ -10,27 +10,33 @@ import java.util.Scanner;
 
 public class FileWriter {
 
-	PrintWriter out;
+	private final String profFilePath = "Profile.txt";
+	private final String contactsFilePath = "Contacts.txt";
+	private final String convFilePath = "Conversations.txt";
+	private final String drawFilePath = "Drawings.txt";
+	
+	
 
-	public void openFile(String filename) {
+	public PrintWriter openFile(String filename) {
 
 		File outputFile = new File(filename);
-		out = null;
+		PrintWriter out = null;
 
 		try {
 
 			out = new PrintWriter(outputFile);
-
+			return out;
+			
 		} catch (FileNotFoundException e) {
 
 			System.out.println("File not found");
-			System.exit(0);
+			return null;
 
 		}
 
 	}
 
-	public void closeFile(String filename) {
+	public void closeFile(PrintWriter out) {
 
 		out.close();
 
@@ -38,6 +44,8 @@ public class FileWriter {
 
 	public Boolean writeProfile(Profile p) {
 
+		PrintWriter out = openFile(profFilePath);
+		
 		String userid = Integer.toString(p.getProfId());
 		String firstName = p.getFirstName();
 		String surname = p.getSurname();
@@ -91,6 +99,7 @@ public class FileWriter {
 
 		out.println(add);
 
+		closeFile(out);
 		return true;
 
 	}
@@ -109,6 +118,8 @@ public class FileWriter {
 
 	public Boolean writeContacts(ContactList contacts) {
 
+		PrintWriter out = openFile(contactsFilePath);
+		
 		for (Profile p : contacts.getContacts()) {
 
 			String isRequest;
@@ -125,11 +136,14 @@ public class FileWriter {
 			out.println(result);
 		}
 
+		closeFile(out);
 		return true;
 	}
 
 	public Boolean writeConversation(String destination, String source, Date timeStamp, String textDesc, String data) {
 
+		PrintWriter out = openFile(convFilePath);
+		
 		Calendar date = Calendar.getInstance();
 		date.setTime(timeStamp);
 		
@@ -155,10 +169,13 @@ public class FileWriter {
 		
 		out.println(printLine);
 		
+		closeFile(out);
 		return true;
 	}
 
 	public Boolean writeDrawing(DrawingPalette drawing) {
+		PrintWriter out = openFile(drawFilePath);
+		
 		String writeLine = "";
 		String filePath = drawing.getFilePath();
 		ArrayList<Profile> prof = drawing.getAuthors();
@@ -172,6 +189,7 @@ public class FileWriter {
 
 		out.println(writeLine);
 
+		closeFile(out);
 		return true;
 	}
 

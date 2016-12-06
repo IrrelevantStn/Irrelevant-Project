@@ -9,34 +9,42 @@ import java.util.Scanner;
 
 public class FileReader {
 
-	Scanner m_in;
+	private final String profFilePath = "Profile.txt";
+	private final String contactsFilePath = "Contacts.txt";
+	private final String convFilePath = "Conversations.txt";
+	private final String drawFilePath = "Drawings.txt";
+	
+	
 
-	public void openFile(String filename) {
+	public Scanner openFile(String filename) {
 
 		File inputFile = new File(filename);
-		m_in = null;
+		Scanner in = null;
 
 		try {
 
-			m_in = new Scanner(inputFile);
+			in = new Scanner(inputFile);
+			return in;
 
 		} catch (FileNotFoundException e) {
 
 			System.out.println("File not found");
-			System.exit(0);
+			return null;
 
 		}
 
 	}
 
-	public void closeFile(String filename) {
+	public void closeFile(Scanner in) {
 
-		m_in.close();
+		in.close();
 
 	}
 
 	public ArrayList<Profile> readProfiles() {
 
+		Scanner m_in = openFile(profFilePath);
+		
 		ArrayList<Profile> profileList = new ArrayList<Profile>();
 		
 		while (m_in.hasNextLine() == true) {
@@ -72,12 +80,15 @@ public class FileReader {
 			
 		}
 		
+		closeFile(m_in);
 		return profileList;
 
 	}
 
 	public Boolean readLogin(String username, String password) {
 
+		Scanner m_in = openFile(profFilePath);
+		
 		while (m_in.hasNextLine() == true) {
 
 			String record = m_in.nextLine();
@@ -85,15 +96,16 @@ public class FileReader {
 
 			if (recArray[0].equalsIgnoreCase(username)) {
 				if (recArray[1].equals(password)) {
-
+					closeFile(m_in);
 					return true;
 
 				} else
+					closeFile(m_in);
 					return false;
 			}
 
 		}
-
+		closeFile(m_in);
 		return false;
 
 	}
@@ -111,7 +123,7 @@ public class FileReader {
 	}
 
 	public ContactList readContacts(String username) {
-		
+		Scanner m_in = openFile(contactsFilePath);
 		ContactList contacts = new ContactList();
 		
 		while(m_in.hasNextLine() == true) {
@@ -130,11 +142,13 @@ public class FileReader {
 			}
 			
 		}
+		closeFile(m_in);
 		return contacts;
 	}
 
 	public Conversations readConversations() {
 		
+		Scanner m_in = openFile(convFilePath);
 		Conversations conversation = new Conversations();
 
 		
@@ -178,12 +192,14 @@ public class FileReader {
 			
 			
 		}
-
+		closeFile(m_in);
 		return conversation;
 	}
 	
 	public ArrayList<String> getUsernames() {
 		ArrayList<String> usernames = new ArrayList<String>();
+		Scanner m_in = openFile(profFilePath);
+		
 		while (m_in.hasNextLine() == true) {
 			
 			String profiles = m_in.nextLine();
@@ -193,11 +209,13 @@ public class FileReader {
 			usernames.add(user);
 		}
 		
+		closeFile(m_in);
 		return usernames;
 	}
 
 	public ArrayList<DrawingPalette> readDrawings(Graph users) {
 
+		Scanner m_in = openFile(drawFilePath);
 		ArrayList<DrawingPalette> drawingList = new ArrayList<DrawingPalette>();
 		DrawingPalette drawing = new DrawingPalette();
 		
@@ -219,6 +237,7 @@ public class FileReader {
 			
 		}
 		
+		closeFile(m_in);
 		return drawingList;
 	}
 

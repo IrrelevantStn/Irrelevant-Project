@@ -1,8 +1,5 @@
 import javax.swing.*;
 
-/**
- * Created by mat on 06/12/16.
- */
 public class LoginView {
     private final String USERNAME_INSTRUCTIONS = "Username stuff goes here";
     private final String PASSWORD_INSTRUCTIONS = "Password stuff goes here";

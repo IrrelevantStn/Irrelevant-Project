@@ -1,10 +1,12 @@
+import java.util.Date;
+
 /**
  * Created by mat on 30/11/16.
  */
 public class TextMessage extends Message{
     private String contentText;
 
-    protected TextMessage(String destination, String source, int timestamp, String contentText) {
+    protected TextMessage(String destination, String source, Date timestamp, String contentText) {
         super(destination, source, timestamp);
         textFormatting(contentText);
     }

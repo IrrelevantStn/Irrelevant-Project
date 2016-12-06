@@ -4,7 +4,7 @@ import java.util.Date;
  * Created by mat on 30/11/16.
  */
 public class TextMessage extends Message{
-    private String contentText;
+    private String m_contentText;
 
     protected TextMessage(String destination, String source, Date timestamp, String contentText) {
         super(destination, source, timestamp);
@@ -12,10 +12,10 @@ public class TextMessage extends Message{
     }
 
     protected void textFormatting(String contentText) {
-        this.contentText = contentText;
+        this.m_contentText = contentText;
     }
 
     public String getContentText() {
-        return contentText;
+        return m_contentText;
     }
 }

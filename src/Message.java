@@ -4,28 +4,28 @@ import java.util.Date;
  * Created by mat on 29/11/16.
  */
 public abstract class Message {
-    private String destination;
-    private String source;
-    private Date timestamp;
+    private String m_destination;
+    private String m_source;
+    private Date m_timestamp;
 
     protected Message(String destination, String source, Date timestamp){
-        this.destination = destination;
-        this.source = destination;
-        this.timestamp = timestamp;
+        this.m_destination = destination;
+        this.m_source = source;
+        this.m_timestamp = timestamp;
 
     }
     protected abstract void textFormatting(String text);
 
     public String getDestination() {
-        return destination;
+        return m_destination;
     }
 
     public String getSource() {
-        return source;
+        return m_source;
     }
 
     public Date getTimestamp() {
-        return timestamp;
+        return m_timestamp;
     }
 
 }

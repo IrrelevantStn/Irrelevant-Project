@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+
 public class MainMenuView {
 	//MainMenuView JPanel
     private JPanel contentPane;
@@ -33,6 +34,15 @@ public class MainMenuView {
 	    
 	    contentPane = new JPanel();
 	    contentPane.setBackground(Color.MAGENTA);
+	    
+	    contactsBtn();
+	    messagesBtn();
+	    profileBtn();
+	    drawingBtn();
+	    logoutBtn();
+
+	    
+	    name.setVisible(true);
 
     }
 
@@ -41,6 +51,16 @@ public class MainMenuView {
 		btnContactsbtn.setBounds(20, 15, WIDTH - 40, 40);
 		name.getContentPane().add(btnContactsbtn);
 
+		@Override
+		public void actionPerformed(ActionEvent e){
+			if (e.getSource() == contactsBtn){
+				
+			}
+			
+			
+			
+		
+		}
     }
 
     private void messagesBtn(){
@@ -67,3 +87,9 @@ public class MainMenuView {
 		name.getContentPane().add(btnLogoutbtn);
     }
 }
+
+private class BtnHandler implements ActionListener{
+	
+
+}
+

@@ -1,4 +1,6 @@
 import java.awt.Font;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -7,7 +9,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class MainMenuView {
+	//MainMenuView JPanel
     private JPanel contentPane;
+    //MainMenuView Buttons
     private JButton contactsBtn;
     private JButton messagesBtn;
     private JButton profileBtn;
@@ -27,17 +31,9 @@ public class MainMenuView {
 		name.setBounds(new Rectangle(20, 15, WIDTH - 40, 40));
 	    name.setTitle("Contacts List");
 	    
-		m_contentPane = new JPanel();
+	    contentPane = new JPanel();
+	    contentPane.setBackground(Color.MAGENTA);
 
-		m_contentPane.setBackground(Color.WHITE);
-		add(m_contentPane, BorderLayout.CENTER);
-
-		m_sidePane = new JPanel();
-		m_sidePane.setBackground(Color.GRAY);
-
-		m_sidePane.setPreferredSize(new Dimension(100, 50));
-		add(m_sidePane, BorderLayout.EAST);
-    	
     }
 
     private void contactsBtn(){
@@ -45,22 +41,29 @@ public class MainMenuView {
 		btnContactsbtn.setBounds(20, 15, WIDTH - 40, 40);
 		name.getContentPane().add(btnContactsbtn);
 
-
     }
 
     private void messagesBtn(){
-
+		JButton btnMessagesbtn = new JButton("messagesBtn");
+		btnMessagesbtn.setBounds(20, 15, WIDTH - 40, 40);
+		name.getContentPane().add(btnMessagesbtn);
     }
 
     private void profileBtn(){
-
+		JButton btnProfilebtn = new JButton("profileBtn");
+		btnProfilebtn.setBounds(20, 15, WIDTH - 40, 40);
+		name.getContentPane().add(btnProfilebtn);
     }
 
     private void drawingBtn(){
-
+		JButton btnDrawingbtn = new JButton("drawingBtn");
+		btnDrawingbtn.setBounds(20, 15, WIDTH - 40, 40);
+		name.getContentPane().add(btnDrawingbtn);
     }
 
     private void logoutBtn(){
-
+		JButton btnLogoutbtn = new JButton("logoutBtn");
+		btnLogoutbtn.setBounds(20, 15, WIDTH - 40, 40);
+		name.getContentPane().add(btnLogoutbtn);
     }
 }

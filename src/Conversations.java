@@ -1,16 +1,13 @@
 import java.util.ArrayList;
 
 public class Conversations {
-	private ArrayList<Message> m_msgSent;
-	private ArrayList<Message> m_msgReceived;
+	private ArrayList<Message> m_messages;
 	
-	Conversations(ArrayList<Message> msgSent, ArrayList<Message> msgReceived){
-		this.m_msgSent = msgSent;
-		this.m_msgReceived = msgReceived;
+	Conversations(ArrayList<Message> messages){
+		this.m_messages = messages;
 	}
 	
-	public void saveChanges(){
-		FileWriter.conversationHistory(m_msgSent, m_msgReceived);
+	public void addNewMessage(Message m){
+		m_messages.add(m);
 	}
-	
 }

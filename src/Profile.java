@@ -1,17 +1,15 @@
 package com;
 
-
-import java.util.Calendar;
-
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Profile {
 	
-	public static void main(String[] args ) {
-		System.out.println(new Profile("abc", "123456",
-				"Wenting", "Zhang", "44332211", 
-				Calendar.getInstance(), "London",Calendar.getInstance(),"" ) );
-	}
+//	public static void main(String[] args ) {
+//		System.out.println(new Profile("abc", "123456",
+//				"Wenting", "Zhang", "44332211", 
+//				new Date(), "London" ) );
+//	}
 	
 	public Profile(String userName, String password ) {
 		
@@ -19,28 +17,30 @@ public class Profile {
 		this.password = password;
 
 		firstName = "";
-		surname = "";
+		lastName = "";
 		telephone = "";
-		birthday = null;
+		birthday = new Date();
 		city = "";
-		lastLogin = null;
+//		newMessages = 0;
+		lastLogin = new Date();
 		profImg = null;
 		
 	}
 	
 	public Profile(String userName, String password, 
-			String firstName, String surname, String telephone,
-			Calendar birthday, String city, Calendar lastLogin, String profImg ) {
+			String firstName, String lastName, String telephone,
+			Date birthday, String city ) {
 		
 		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;
-		this.surname = surname;
+		this.lastName = lastName;
 		this.telephone = telephone;
 		this.birthday = birthday;
 		this.city = city;
-		this.lastLogin = lastLogin;
-		this.profImg = profImg;
+//		newMessages = 0;
+		lastLogin = new Date();
+		profImg = "default.jpg";
 		
 	}
 	
@@ -62,11 +62,11 @@ public class Profile {
 		this.firstName = firstName;
 	}
 	
-	public String getSurname() {
-		return surname;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
 	public String getTelephone() {
@@ -76,10 +76,10 @@ public class Profile {
 		this.telephone = telephone;
 	}
 	
-	public Calendar getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Calendar birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 	
@@ -90,10 +90,17 @@ public class Profile {
 		this.city = city;
 	}
 	
-	public Calendar getLastLogin() {
+//	public int getNewMessages() {
+//		return newMessages;
+//	}
+//	public void setNewMessages(int newMessages) {
+//		this.newMessages = newMessages;
+//	}
+	
+	public Date getLastLogin() {
 		return lastLogin;
 	}
-	public void setLastLogin(Calendar lastLogin) {
+	public void setLastLogin(Date lastLogin) {
 		this.lastLogin = lastLogin;
 	}
 	
@@ -108,25 +115,24 @@ public class Profile {
 		
 		return "UserName: \t" + userName + "\r\n" +
 				"First Name: \t" + firstName + "\r\n" +
-				"Last Name: \t" + surname + "\r\n" +
+				"Last Name: \t" + lastName + "\r\n" +
 				"Telephone: \t" + telephone + "\r\n" +
-				"Birthday: \t" + lastLogin.get(Calendar.DATE) +
-				"/" + lastLogin.get(Calendar.MONTH)
-				+ "/" + lastLogin.get(Calendar.YEAR) + "\r\n" +
-				"City: \t\t" + city + "\r\n" +
-				"Last Login: \t" + lastLogin.get(Calendar.DATE) +
-				"/" + lastLogin.get(Calendar.MONTH)
-				+ "/" + lastLogin.get(Calendar.YEAR) + "\r\n" + "ProfImg: \t" + profImg;
+				"Birthday: \t" + new SimpleDateFormat("dd/MM/yyyy" )
+					.format(birthday ) + "\r\n" +
+				"City: \t" + city + "\r\n" +
+				"Last Login: \t" + new SimpleDateFormat("dd/MM/yyyy" )
+					.format(lastLogin) + "\r\n";
 	}
 	
 	private String userName;
 	private String password;
 	private String firstName;
-	private String surname;
+	private String lastName;
 	private String telephone;
-	private Calendar birthday;
+	private Date birthday;
 	private String city;
-	private Calendar lastLogin;
+//	private int newMessages;
+	private Date lastLogin;
 	private String profImg;
 	
 }

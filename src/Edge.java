@@ -1,28 +1,32 @@
 
 public class Edge {
-	private final Node a;
-	private final Node b;
-	private boolean isBidirectional;
+	private final Node USER;
+	private final Node FRIEND;
+	private boolean m_isBidirectional;
 	
-	public Edge(Node a, Node b, boolean isBidirectional){
-		this.a = a;
-		this.b = b;
-		this.isBidirectional = isBidirectional;
+	public Edge(Node user, Node friend, boolean isBidirectional){
+		this.USER = user;
+		this.FRIEND = friend;
+		this.m_isBidirectional = isBidirectional;
 	}
 
-	public Node getA() {
-		return a;
+	public Node getUser() {
+		return USER;
 	}
 
-	public Node getB() {
-		return b;
+	public Node getFriend() {
+		return FRIEND;
 	}
 
 	public boolean isBidirectional() {
-		return isBidirectional;
+		return m_isBidirectional;
 	}
 	
-	public void setIsBidirectional(boolean m){
-		this.isBidirectional = m;
+	public void setIsBidirectional(boolean b){
+		this.m_isBidirectional = b;
+	}
+	
+	public String toString(){
+		return("Edge test works");
 	}
 }

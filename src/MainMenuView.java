@@ -25,15 +25,19 @@ public class MainMenuView  {
     
     private JFrame name;
 
-	private static final int WIDTH = 500;
-	private static final int HEIGHT = 400;
+	//private static final int WIDTH = 500;
     
+	
+	
+	
+	
+	
 	/**
 	 * Create the frame.
 	 */
     public MainMenuView(){
 		name = new JFrame();
-		name.setBounds(new Rectangle(20, 15, WIDTH - 40, 40));
+		name.setBounds(new Rectangle(100, 100, 450, 300));
 	    name.setTitle("Contacts List");
 	    
 	    contentPane = new JPanel();
@@ -52,7 +56,7 @@ public class MainMenuView  {
 
     private void contactsBtn(){
 		JButton btnContactsbtn = new JButton("contactsBtn");
-		btnContactsbtn.setBounds(20, 15, WIDTH - 40, 40);
+		btnContactsbtn.setBounds(48, 56, 89, 23);
 		name.getContentPane().add(btnContactsbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnContactsbtn.addMouseListener(handler);
@@ -61,7 +65,7 @@ public class MainMenuView  {
 
     private void messagesBtn(){
 		JButton btnMessagesbtn = new JButton("messagesBtn");
-		btnMessagesbtn.setBounds(20, 15, WIDTH - 40, 40);
+		btnMessagesbtn.setBounds(308, 88, 89, 23);
 		name.getContentPane().add(btnMessagesbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnMessagesbtn.addMouseListener(handler);
@@ -69,7 +73,7 @@ public class MainMenuView  {
 
     private void profileBtn(){
 		JButton btnProfilebtn = new JButton("profileBtn");
-		btnProfilebtn.setBounds(20, 15, WIDTH - 40, 40);
+		btnProfilebtn.setBounds(203, 29, 89, 23);
 		name.getContentPane().add(btnProfilebtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnProfilebtn.addMouseListener(handler);
@@ -77,7 +81,7 @@ public class MainMenuView  {
 
     private void drawingBtn(){
 		JButton btnDrawingbtn = new JButton("drawingBtn");
-		btnDrawingbtn.setBounds(20, 15, WIDTH - 40, 40);
+		btnDrawingbtn.setBounds(175, 162, 89, 23);
 		name.getContentPane().add(btnDrawingbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnDrawingbtn.addMouseListener(handler);
@@ -86,7 +90,7 @@ public class MainMenuView  {
 
     private void logoutBtn(){
 		JButton btnLogoutbtn = new JButton("logoutBtn");
-		btnLogoutbtn.setBounds(20, 15, WIDTH - 40, 40);
+		btnLogoutbtn.setBounds(308, 210, 89, 23);
 		name.getContentPane().add(btnLogoutbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnLogoutbtn.addMouseListener(handler);
@@ -120,15 +124,15 @@ public class MainMenuView  {
 			// TODO Auto-generated method stub
 			
 			if (e.getSource() == contactsBtn) {
-				ContactsView view = new ContactsView();
+				//ContactsView view = new ContactsView();
 			}else if (e.getSource() == messagesBtn) {
-				MessagesView view = new MessagesView();
+				//MessagesView view = new MessagesView();
 			}else if (e.getSource() == profileBtn) {
-				ProfileView view = new ProfileView(getProfile());
+				//ProfileView view = new ProfileView(getProfile());
 			}else if (e.getSource() == drawingBtn) {
-				DrawingView view = new DrawingView();
+				//DrawingView view = new DrawingView();
 			}else if(e.getSource() == logoutBtn) {
-				LoginView view = new LoginView();
+				//LoginView view = new LoginView();
 			}
 			
 		}

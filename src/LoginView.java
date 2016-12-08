@@ -12,7 +12,7 @@ public class LoginView {
     private JButton loginBtn;
     private JButton exitBtn;
 
-    private LoginView(){
+    public LoginView(){
 
     }
 

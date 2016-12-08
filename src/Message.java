@@ -5,7 +5,6 @@ public abstract class Message {
         this.m_destination = destination;
         this.m_source = source;
         this.m_timestamp = timestamp;
-
     }
 
     public String getDestination() {
@@ -25,5 +24,4 @@ public abstract class Message {
     private String m_destination;
     private String m_source;
     private Date m_timestamp;
-
 }

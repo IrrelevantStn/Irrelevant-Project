@@ -124,7 +124,7 @@ public class MainMenuView  {
 			}else if (e.getSource() == messagesBtn) {
 				MessagesView view = new MessagesView();
 			}else if (e.getSource() == profileBtn) {
-				ProfileView view = new ProfileView();
+				ProfileView view = new ProfileView(getProfile());
 			}else if (e.getSource() == drawingBtn) {
 				DrawingView view = new DrawingView();
 			}else if(e.getSource() == logoutBtn) {

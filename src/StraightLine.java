@@ -3,10 +3,10 @@ import java.awt.Graphics;
 
 public class StraightLine {
 private Color colour = new Color.BLACK;
-int x1;
-int x2;
-int y1;
-int y2;
+private int x1;
+private int x2;
+private int y1;
+private int y2;
 
 
 	public int getX1() {
@@ -59,5 +59,5 @@ public void setY2(int y2) {
 		g.drawLine(x1, y1, x2, y2);
 		g.dispose();		
 	}			
-	g.drawLine(x1, y1, x2, y2);
+	g.drawLine(x1, y1, x2, y2)
 }

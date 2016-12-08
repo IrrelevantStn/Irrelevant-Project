@@ -186,7 +186,6 @@ public class RegisterView extends JFrame {
 			JOptionPane.showMessageDialog(null, 
 					("User " + strUserName + " already exists"), "Error",
 				JOptionPane.WARNING_MESSAGE );
-			return;
 		} else {
 			JOptionPane.showMessageDialog(
 					null, 

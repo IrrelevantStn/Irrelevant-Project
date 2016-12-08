@@ -126,12 +126,9 @@ public class FileReader {
 			String line = m_in.nextLine();
 			String[] lineArray = line.split(",");
 			Boolean isRequest;
-			
-			if (Objects.equals(lineArray[2], "true")) {
-				isRequest = true;
-			} else isRequest = false;
-			
-			
+
+			isRequest = Objects.equals(lineArray[2], "true");
+
 			if (username.equals(lineArray[0])) {
 				contacts.addContact(lineArray[1],isRequest);
 			}

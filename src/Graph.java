@@ -15,16 +15,18 @@ public class Graph {
 	}
 	
 	public static void deleteProfile(String name) throws UserDoesNotExistException{
-
-		//TODO currently works only if it's the first user, otherwise says does not exist. While (is another user)?
+		Node n = null;
 		for (Node user : m_nodes) { 
 		    if (user.getElement().getUserName().equals(name)) {
-		       m_nodes.remove(user);
-		       System.out.println("Successfully deleted account with username: " + name);
-		        break;
-		    } else {
-		    	throw new UserDoesNotExistException("The user " + name + " does not exist in the system.");
+		       n = user;
+		       break;
 		    }
+		}
+		if(n == null){
+			throw new UserDoesNotExistException("The user " + name + " does not exist in the system.");
+		} else {
+			m_nodes.remove(n);
+		    System.out.println("Successfully deleted account with username: " + name);
 		}
 	}
 	

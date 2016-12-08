@@ -1,8 +1,5 @@
 import java.util.Date;
 
-/**
- * Created by mat on 29/11/16.
- */
 public abstract class Message {
     protected Message(String destination, String source, Date timestamp){
         this.m_destination = destination;

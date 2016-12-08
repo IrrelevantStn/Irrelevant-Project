@@ -42,7 +42,7 @@ public class FileReader {
 		
 		ArrayList<Profile> profileList = new ArrayList<Profile>();
 		
-		while (m_in.hasNextLine() == true) {
+		while (m_in.hasNextLine()) {
 			
 			String user = m_in.nextLine();
 			String[] userArray = user.split(",");
@@ -84,7 +84,7 @@ public class FileReader {
 
 		Scanner m_in = openFile(profFilePath);
 		
-		while (m_in.hasNextLine() == true) {
+		while (m_in.hasNextLine()) {
 
 			String record = m_in.nextLine();
 			String[] recArray = record.split(",");
@@ -121,7 +121,7 @@ public class FileReader {
 		Scanner m_in = openFile(contactsFilePath);
 		ContactList contacts = new ContactList();
 		
-		while(m_in.hasNextLine() == true) {
+		while(m_in.hasNextLine()) {
 			
 			String line = m_in.nextLine();
 			String[] lineArray = line.split(",");
@@ -147,7 +147,7 @@ public class FileReader {
 		Conversations conversation = new Conversations();
 
 		
-		while (m_in.hasNextLine() == true) {
+		while (m_in.hasNextLine()) {
 			
 			String conv = m_in.nextLine();
 			String[] convArray = conv.split(",");
@@ -195,7 +195,7 @@ public class FileReader {
 		ArrayList<String> usernames = new ArrayList<String>();
 		Scanner m_in = openFile(profFilePath);
 		
-		while (m_in.hasNextLine() == true) {
+		while (m_in.hasNextLine()) {
 			
 			String profiles = m_in.nextLine();
 			String[] profArray = profiles.split(",");
@@ -214,7 +214,7 @@ public class FileReader {
 		ArrayList<DrawingPalette> drawingList = new ArrayList<DrawingPalette>();
 		DrawingPalette drawing = new DrawingPalette();
 		
-		while (m_in.hasNextLine() == true) {
+		while (m_in.hasNextLine()) {
 			
 			String line = m_in.nextLine();
 			String[] lineArray = line.split(",");

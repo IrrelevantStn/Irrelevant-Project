@@ -335,7 +335,7 @@ public class DrawingView extends JFrame {
 		JLabel particle = new JLabel();
 		this.add(particle, BorderLayout.SOUTH);
 		
-		if (isStart == true) {
+		if (isStart) {
 
 			startX = x;
 			startY = y;
@@ -411,7 +411,7 @@ public class DrawingView extends JFrame {
 			if (e.getSource() == getLineBtn() ) {
 				//Line code here
 				
-				if (traceLine == false) {
+				if (!traceLine) {
 					JLabel particle = new JLabel();
 					particle.setText("Click a start point for your line");
 					frame.add(particle,BorderLayout.SOUTH);

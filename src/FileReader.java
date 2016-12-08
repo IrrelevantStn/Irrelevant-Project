@@ -1,11 +1,6 @@
-package common;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileReader {
 
@@ -13,8 +8,8 @@ public class FileReader {
 	private final String contactsFilePath = "Contacts.txt";
 	private final String convFilePath = "Conversations.txt";
 	private final String drawFilePath = "Drawings.txt";
-	
-	
+
+
 
 	public Scanner openFile(String filename) {
 
@@ -132,7 +127,7 @@ public class FileReader {
 			String[] lineArray = line.split(",");
 			Boolean isRequest;
 			
-			if (lineArray[2] == "true") {
+			if (Objects.equals(lineArray[2], "true")) {
 				isRequest = true;
 			} else isRequest = false;
 			
@@ -147,7 +142,7 @@ public class FileReader {
 	}
 
 	public Conversations readConversations() {
-		
+
 		Scanner m_in = openFile(convFilePath);
 		Conversations conversation = new Conversations();
 

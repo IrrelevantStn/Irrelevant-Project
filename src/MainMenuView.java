@@ -120,15 +120,15 @@ public class MainMenuView  {
 			// TODO Auto-generated method stub
 			
 			if (e.getSource() == contactsBtn) {
-				
+				ContactsView view = new ContactsView();
 			}else if (e.getSource() == messagesBtn) {
-				
+				MessagesView view = new MessagesView();
 			}else if (e.getSource() == profileBtn) {
-				
+				ProfileView view = new ProfileView();
 			}else if (e.getSource() == drawingBtn) {
-				
+				DrawingView view = new DrawingView();
 			}else if(e.getSource() == logoutBtn) {
-				
+				LoginView view = new LoginView();
 			}
 			
 		}
@@ -152,8 +152,6 @@ public class MainMenuView  {
 			// TODO Auto-generated method stub
 			
 		}
-    
-      
     
     }
 }

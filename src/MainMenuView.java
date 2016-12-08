@@ -81,6 +81,7 @@ public class MainMenuView  {
 		name.getContentPane().add(btnDrawingbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnDrawingbtn.addMouseListener(handler);
+	
     }
 
     private void logoutBtn(){

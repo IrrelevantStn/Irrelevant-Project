@@ -15,6 +15,8 @@ public class Graph {
 	}
 	
 	public static void deleteProfile(String name) throws UserDoesNotExistException{
+
+		//TODO currently works only if it's the first user, otherwise says does not exist. While (is another user)?
 		for (Node user : m_nodes) { 
 		    if (user.getElement().getUserName().equals(name)) {
 		       m_nodes.remove(user);

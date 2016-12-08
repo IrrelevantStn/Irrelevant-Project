@@ -2,6 +2,7 @@ import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,20 +29,18 @@ public class MainMenuView  {
 	//private static final int WIDTH = 500;
     
 	
-	
-	
-	
-	
 	/**
 	 * Create the frame.
 	 */
     public MainMenuView(){
 		name = new JFrame();
 		name.setBounds(new Rectangle(100, 100, 450, 300));
-	    name.setTitle("Contacts List");
+		name.getContentPane().setLayout(new BoxLayout(name.getContentPane(), BoxLayout.X_AXIS));
 	    
 	    contentPane = new JPanel();
 	    contentPane.setBackground(Color.MAGENTA);
+	    
+	    JButton btnContactsbtn = new JButton("contactsBtn");
 	    
 	    contactsBtn();
 	    messagesBtn();
@@ -49,15 +48,20 @@ public class MainMenuView  {
 	    drawingBtn();
 	    logoutBtn();
 
+	    Panel p1 = new Panel();
+	    
+	    p1.add(btnContactsbtn);
+	   // p1.add();
+
 	    
 	    name.setVisible(true);
 
     }
 
     private void contactsBtn(){
-		JButton btnContactsbtn = new JButton("contactsBtn");
-		btnContactsbtn.setBounds(48, 56, 89, 23);
-		name.getContentPane().add(btnContactsbtn);
+	    JButton btnContactsbtn = new JButton("contactsBtn");
+		//btnContactsbtn.setBounds(48, 56, 50, 50);
+		name.getContentPane().add(btnContactsbtn,BorderLayout.WEST);
 		BtnHandler handler = new BtnHandler(name);
 		btnContactsbtn.addMouseListener(handler);
 		
@@ -65,24 +69,24 @@ public class MainMenuView  {
 
     private void messagesBtn(){
 		JButton btnMessagesbtn = new JButton("messagesBtn");
-		btnMessagesbtn.setBounds(308, 88, 89, 23);
-		name.getContentPane().add(btnMessagesbtn);
+		//btnMessagesbtn.setBounds(308, 88, 89, 23);
+		name.getContentPane().add(btnMessagesbtn,BorderLayout.CENTER);
 		BtnHandler handler = new BtnHandler(name);
 		btnMessagesbtn.addMouseListener(handler);
     }
 
     private void profileBtn(){
 		JButton btnProfilebtn = new JButton("profileBtn");
-		btnProfilebtn.setBounds(203, 29, 89, 23);
-		name.getContentPane().add(btnProfilebtn);
+		//btnProfilebtn.setBounds(203, 29, 89, 23);
+		name.getContentPane().add(btnProfilebtn,BorderLayout.WEST);
 		BtnHandler handler = new BtnHandler(name);
 		btnProfilebtn.addMouseListener(handler);
     }
 
     private void drawingBtn(){
 		JButton btnDrawingbtn = new JButton("drawingBtn");
-		btnDrawingbtn.setBounds(175, 162, 89, 23);
-		name.getContentPane().add(btnDrawingbtn);
+		//btnDrawingbtn.setBounds(175, 162, 89, 23);
+		name.getContentPane().add(btnDrawingbtn,BorderLayout.EAST);
 		BtnHandler handler = new BtnHandler(name);
 		btnDrawingbtn.addMouseListener(handler);
 	
@@ -90,8 +94,8 @@ public class MainMenuView  {
 
     private void logoutBtn(){
 		JButton btnLogoutbtn = new JButton("logoutBtn");
-		btnLogoutbtn.setBounds(308, 210, 89, 23);
-		name.getContentPane().add(btnLogoutbtn);
+		//btnLogoutbtn.setBounds(308, 210, 89, 23);
+		name.getContentPane().add(btnLogoutbtn,BorderLayout.WEST);
 		BtnHandler handler = new BtnHandler(name);
 		btnLogoutbtn.addMouseListener(handler);
     }

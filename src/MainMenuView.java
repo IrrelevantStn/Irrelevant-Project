@@ -121,6 +121,14 @@ public class MainMenuView  {
 			
 			if (e.getSource() == contactsBtn) {
 				
+			}else if (e.getSource() == messagesBtn) {
+				
+			}else if (e.getSource() == profileBtn) {
+				
+			}else if (e.getSource() == drawingBtn) {
+				
+			}else if(e.getSource() == logoutBtn) {
+				
 			}
 			
 		}
@@ -148,6 +156,7 @@ public class MainMenuView  {
       
     
     }
+}
 
 
 

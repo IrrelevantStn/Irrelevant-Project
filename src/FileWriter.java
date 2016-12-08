@@ -18,7 +18,7 @@ public class FileWriter {
 	public PrintWriter openFile(String filename) {
 
 		File outputFile = new File(filename);
-		PrintWriter out = null;
+		PrintWriter out;
 
 		try {
 

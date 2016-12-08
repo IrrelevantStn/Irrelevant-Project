@@ -168,7 +168,7 @@ public class RegisterView extends JFrame {
 		}
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy" );
-		Date birthday = null;
+		Date birthday;
 		
 		try {
 			birthday = formatter.parse(strBirthday );

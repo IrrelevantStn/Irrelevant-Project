@@ -14,7 +14,7 @@ public class FileReader {
 	public Scanner openFile(String filename) {
 
 		File inputFile = new File(filename);
-		Scanner in = null;
+		Scanner in;
 
 		try {
 

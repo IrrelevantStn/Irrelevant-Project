@@ -10,13 +10,13 @@ public class Graph {
 	public static void addProfile(Profile p){
 		 Node n = new Node(p);
 		 m_nodes.add(n);
-		 System.out.println("The profile with the username: " + p.getUsername() +
+		 System.out.println("The profile with the username: " + p.getUserName() +
 				 			" has been successfully added to the system.");
 	}
 	
 	public static void deleteProfile(String name) throws UserDoesNotExistException{
 		for (Node user : m_nodes) { 
-		    if (user.getElement().getUsername().equals(name)) {
+		    if (user.getElement().getUserName().equals(name)) {
 		       m_nodes.remove(user);
 		       System.out.println("Successfully deleted account with username: " + name);
 		        break;
@@ -29,7 +29,7 @@ public class Graph {
 	public static Node findNode(String name) throws UserDoesNotExistException{
 		Node n = null;
 		for (Node user : m_nodes) { 
-		    if (user.getElement().getUsername().equals(name)) {
+		    if (user.getElement().getUserName().equals(name)) {
 		        n = user;
 		        break;
 		    }

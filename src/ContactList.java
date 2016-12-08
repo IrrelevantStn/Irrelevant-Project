@@ -25,7 +25,7 @@ public class ContactList {
 	public Profile findContact(String name) throws UserDoesNotExistException{
 		Profile friend = null;
 		for(Profile p : m_contactList){
-			if(p.getUsername().equals(name)){
+			if(p.getUserName().equals(name)){
 				friend = p;
 				break;
 			}

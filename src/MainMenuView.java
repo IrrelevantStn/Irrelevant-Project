@@ -14,7 +14,7 @@ import javax.swing.*;
 import com.sun.glass.events.MouseEvent;
 
 
-public class MainMenuView  {
+public class MainMenuView implements ActionListener  {
 	//MainMenuView JPanel
     private JPanel contentPane;
     //MainMenuView Buttons
@@ -25,8 +25,6 @@ public class MainMenuView  {
     private JButton logoutBtn;
     
     private JFrame name;
-
-	//private static final int WIDTH = 500;
     
 	
 	/**
@@ -40,67 +38,53 @@ public class MainMenuView  {
 	    contentPane = new JPanel();
 	    contentPane.setBackground(Color.MAGENTA);
 	    
-	    JButton btnContactsbtn = new JButton("contactsBtn");
-	    
 	    contactsBtn();
 	    messagesBtn();
 	    profileBtn();
 	    drawingBtn();
 	    logoutBtn();
 
-	    Panel p1 = new Panel();
-	    
-	    p1.add(btnContactsbtn);
-	   // p1.add();
-
-	    
 	    name.setVisible(true);
 
     }
 
     private void contactsBtn(){
 	    JButton btnContactsbtn = new JButton("contactsBtn");
-		//btnContactsbtn.setBounds(48, 56, 50, 50);
-		name.getContentPane().add(btnContactsbtn,BorderLayout.WEST);
+		name.getContentPane().add(btnContactsbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnContactsbtn.addMouseListener(handler);
-		
+
 		}
 
     private void messagesBtn(){
 		JButton btnMessagesbtn = new JButton("messagesBtn");
-		//btnMessagesbtn.setBounds(308, 88, 89, 23);
-		name.getContentPane().add(btnMessagesbtn,BorderLayout.CENTER);
+		name.getContentPane().add(btnMessagesbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnMessagesbtn.addMouseListener(handler);
     }
 
     private void profileBtn(){
 		JButton btnProfilebtn = new JButton("profileBtn");
-		//btnProfilebtn.setBounds(203, 29, 89, 23);
-		name.getContentPane().add(btnProfilebtn,BorderLayout.WEST);
+		name.getContentPane().add(btnProfilebtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnProfilebtn.addMouseListener(handler);
     }
 
     private void drawingBtn(){
 		JButton btnDrawingbtn = new JButton("drawingBtn");
-		//btnDrawingbtn.setBounds(175, 162, 89, 23);
-		name.getContentPane().add(btnDrawingbtn,BorderLayout.EAST);
+		name.getContentPane().add(btnDrawingbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnDrawingbtn.addMouseListener(handler);
-	
     }
 
     private void logoutBtn(){
 		JButton btnLogoutbtn = new JButton("logoutBtn");
-		//btnLogoutbtn.setBounds(308, 210, 89, 23);
-		name.getContentPane().add(btnLogoutbtn,BorderLayout.WEST);
+		name.getContentPane().add(btnLogoutbtn);
 		BtnHandler handler = new BtnHandler(name);
 		btnLogoutbtn.addMouseListener(handler);
     }
     
-    
+
     
     
     
@@ -132,11 +116,11 @@ public class MainMenuView  {
 			}else if (e.getSource() == messagesBtn) {
 				//MessagesView view = new MessagesView();
 			}else if (e.getSource() == profileBtn) {
-				//ProfileView view = new ProfileView(getProfile());
+			    //ProfileView view = new ProfileView();
 			}else if (e.getSource() == drawingBtn) {
-				//DrawingView view = new DrawingView();
+				DrawingView view = new DrawingView();
 			}else if(e.getSource() == logoutBtn) {
-				//LoginView view = new LoginView();
+				LoginView view = new LoginView();
 			}
 			
 		}
@@ -162,7 +146,49 @@ public class MainMenuView  {
 		}
     
     }
+
+	//@Override
+	//public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+ 
+		
+	//}
+    
+	public void contactsBtnActionPerformed(java.awt.event.ActionEvent evt) {
+		
+		contactsBtn.addActionListener(new java.awt.event.ActionListener() {
+		    public void actionPerformed(java.awt.event.ActionEvent evt) {
+		           contactsBtnActionPerformed(evt);
+		    }
+		});
+		/*
+		messagesBtn.addActionListener(this);
+		profileBtn.addActionListener(this);
+		drawingBtn.addActionListener(new java.awt.event.ActionListener() {
+		    public void actionPerformed(java.awt.event.ActionEvent evt) {
+		           jButton3ActionPerformed(evt);
+		    }
+		});
+		logoutBtn .addActionListener(this);
+	*/
+	}
+
+
+	
 }
 
+/*
+public class MainMenuView { 
+	
+	 contactBtn.contactKeyboardAction(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (contactsBtn == e.getSource()) {
+					mouseClicked();
+				}
+			}
+
+	
+}
+*/
 
 

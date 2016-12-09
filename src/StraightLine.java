@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class StraightLine {
-private Color colour = new Color.BLACK;
+private Color colour = new Color(000000);
 private int x1;
 private int x2;
 private int y1;

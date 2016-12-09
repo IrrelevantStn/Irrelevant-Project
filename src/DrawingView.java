@@ -235,6 +235,7 @@ public class DrawingView extends JFrame {
 	/**
 	 * Constructor
 	 */
+	//TODO Method too long
 	public DrawingView() {
 
 		// Set up JFrame

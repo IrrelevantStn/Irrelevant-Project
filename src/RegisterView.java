@@ -30,7 +30,7 @@ public class RegisterView extends JFrame {
 	public static void main(String[] args ) {
 		new RegisterView(null ).setVisible(true );
 	}
-	
+	//TODO Method too long
 	public RegisterView(JFrame parent ) {
 		this.setSize(WIDTH, HEIGHT );
 		this.setTitle("Sign Up" );

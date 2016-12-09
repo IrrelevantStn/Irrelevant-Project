@@ -1,3 +1,4 @@
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
@@ -21,7 +22,8 @@ public class ProfileView extends JFrame {
 	public static void main(String[] args ) {
 		Profile wtz = new Profile("abc", "123456",
 			"Wenting", "Zhang", "44332211", 
-			new Date(), "London", new Date(), "/Users/zwt/Desktop/WechatIMG1.jpeg" );
+			new Date(), "London",new Date(),
+			"/Users/zwt/Desktop/WechatIMG1.jpeg");
 		
 		new ProfileView(wtz).setVisible(true );
 	}
@@ -49,8 +51,8 @@ public class ProfileView extends JFrame {
 		profImg = new JLabel("" );
 		
 		ImageIcon img = new ImageIcon(profile.getProfImg() );
-		img.setImage(img.getImage().getScaledInstance(100, 190, Image
-				.SCALE_DEFAULT) );
+		img.setImage(img.getImage().getScaledInstance(100, 190,
+				Image.SCALE_DEFAULT) );
 		
 		profImg.setIcon(img );
 		usrinfo = new JTextArea(profile.toString() );
@@ -63,16 +65,13 @@ public class ProfileView extends JFrame {
 		usrinfo.setEditable(false );
 		
 		Panel p0 = new Panel();
-		// p0.setLayout(new GridLayout(1, 2 ) );
-		
-		// p0.add(title );
 		p0.add(profImg );
 		p0.add(usrinfo );
 		p0.setBounds(new Rectangle(0, 20, WIDTH, 200 ) );
 		this.add(p0 );
 		
 		cancelBtn = new JButton("Cancel" );
-		editBtn = new JButton("Edit" );
+
 		
 		cancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0 ) {
@@ -80,16 +79,10 @@ public class ProfileView extends JFrame {
 			}
 		} );
 		
-		editBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0 ) {
-				editBtnClick();
-			}
-		} );
 		
 		Panel p2 = new Panel();
 		
 		p2.add(cancelBtn );
-		p2.add(editBtn );
 		p2.setBounds(new Rectangle(0, 240, WIDTH, 50 ) );
 		this.add(p2 );
 	}
@@ -102,9 +95,7 @@ public class ProfileView extends JFrame {
 		}	
 	}
 
-	private void editBtnClick() {
-		
-	}
+
 	
 	@SuppressWarnings("unused")
 	private Profile profile;
@@ -114,9 +105,8 @@ public class ProfileView extends JFrame {
 	private JTextArea usrinfo;
 	
 	private JButton cancelBtn;
-	private JButton editBtn;
+
 	
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 340;
 }
-

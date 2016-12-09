@@ -303,7 +303,8 @@ public class DrawingView extends JFrame {
 		// add combo boxes
 		this.setChooseDrawings(new JComboBox<String>());
 		String[] drawings = { "one", "two", "three", "four", "five" };
-		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(drawings);
+		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>
+				(drawings);
 		this.getChooseDrawings().setModel(model);
 
 		// Add components to the side panel
@@ -390,7 +391,8 @@ public class DrawingView extends JFrame {
 
 	          boolean test = false;
 	          if (test) {
-	            System.out.println("PaintHandler::mouseDragged() " + event.toString());
+	            System.out.println("PaintHandler::mouseDragged() " + event
+                        .toString());
 	          }
 
 	         // if ( getPointCount() < getPoints().length ) {
@@ -431,7 +433,8 @@ public class DrawingView extends JFrame {
 				//load the drawing
 				try {
 					
-					m_contentPane.loadDrawing(m_chooseDrawings.getSelectedItem().toString());
+					m_contentPane.loadDrawing(m_chooseDrawings
+                            .getSelectedItem().toString());
 					
 				} catch (IOException exception) {
 					System.out.println("Could not load the file");
@@ -472,7 +475,8 @@ public class DrawingView extends JFrame {
 
 	          boolean test = false;
 	          if (test) {
-	            System.out.println("PaintHandler::mouseMoved() " + event.toString());
+	            System.out.println("PaintHandler::mouseMoved() " + event
+                        .toString());
 	          }
 	          
 	          if (drawMode == 1) {
@@ -490,7 +494,8 @@ public class DrawingView extends JFrame {
 
 	          boolean test = true;
 	          if (test) {
-	            System.out.println("PaintHandler::mouseEntered() " + event.toString());
+	            System.out.println("PaintHandler::mouseEntered() " + event
+                        .toString());
 	          }
 	       }
 
@@ -498,11 +503,11 @@ public class DrawingView extends JFrame {
 	        * This method is defined in MouseListener.
 	        */
 		@Override
-	       public void mouseExited(MouseEvent event) {
-
-	          boolean test = true;
-	          if (test) {
-	            System.out.println("PaintHandler::mouseExited() " + event.toString());
+        public void mouseExited(MouseEvent event) {
+            boolean test = true;
+            if (test) {
+                  System.out.println("PaintHandler::mouseExited() " + event
+                        .toString());
 	          }
 	       }
 
@@ -513,11 +518,11 @@ public class DrawingView extends JFrame {
 	        * This method is defined in MouseListener.
 	        */
 		@Override
-	          public void mouseReleased(MouseEvent event) {
-
-	        	  boolean test = true;
-	        	  if (test) {
-	        		  System.out.println("PaintHandler::mouseReleased() " + event.toString());
+        public void mouseReleased(MouseEvent event) {
+            boolean test = true;
+            if (test) {
+                System.out.println("PaintHandler::mouseReleased() " + event
+                        .toString());
 	        	  }
 	        		  
 	        	  

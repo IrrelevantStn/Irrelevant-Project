@@ -50,7 +50,8 @@ public class ProfileView extends JFrame {
 		profImg = new JLabel("" );
 		
 		ImageIcon img = new ImageIcon(profile.getProfImg() );
-		img.setImage(img.getImage().getScaledInstance(100, 190, Image.SCALE_DEFAULT) );
+		img.setImage(img.getImage().getScaledInstance(100, 190, Image
+				.SCALE_DEFAULT) );
 		
 		profImg.setIcon(img );
 		usrinfo = new JTextArea(profile.toString() );

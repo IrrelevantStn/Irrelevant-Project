@@ -1,7 +1,8 @@
 import java.util.Date;
 
 public abstract class PathMessage extends Message{
-    protected PathMessage(String destination, String source, Date timestamp, String contentDescription) {
+    protected PathMessage(String destination, String source, Date timestamp,
+                          String contentDescription) {
         super(destination, source, timestamp);
         textFormatting(contentDescription);
     }

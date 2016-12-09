@@ -69,8 +69,8 @@ public class FileReader {
 			Date lastLogin = last.getTime();
 			String profImg = userArray[14];
 			
-			Profile temp = new Profile(username,firstName,surname,number,birthday,city,
-					numNewMsg,lastLogin,profImg,userid,password);
+			Profile temp = new Profile(username,firstName,surname,number,
+                    birthday,city, numNewMsg,lastLogin,profImg,userid,password);
 			profileList.add(temp);
 			
 		}
@@ -169,11 +169,14 @@ public class FileReader {
 						
 			switch (msgType) {
 				
-			case "url" :    msg = new UrlMessage(destination,source,timeStamp,textDesc,data);
+			case "url" :    msg = new UrlMessage(destination,source,
+                    timeStamp,textDesc,data);
 							break;
-			case "text"	:	msg = new TextMessage(destination,source,timeStamp,data);
+			case "text"	:	msg = new TextMessage(destination,source,
+                    timeStamp,data);
 							break;
-			case "file"	:	msg = new FileMessage(destination,source,timeStamp,textDesc,data);
+			case "file"	:	msg = new FileMessage(destination,source,
+                    timeStamp,textDesc,data);
 							break;
 			default		:	break;
 				

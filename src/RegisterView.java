@@ -72,7 +72,8 @@ public class RegisterView extends JFrame {
 				 int r = jfc.showOpenDialog(RegisterView.this );
 				 
 				 if (JFileChooser.APPROVE_OPTION == r ) {
-					 RegisterView.this.profImg.setText(jfc.getSelectedFile().getAbsolutePath() );
+					 RegisterView.this.profImg.setText(jfc.getSelectedFile()
+							 .getAbsolutePath() );
 				 }
 			}
 		});
@@ -146,9 +147,10 @@ public class RegisterView extends JFrame {
 		String strCity = city.getText();
 		String strProfImg = profImg.getText();
 		
-		if (strUserName.equals("" ) || strPwd.equals("" ) || strTel.equals("" ) ||
-				strFirstName.equals("" ) || strLastName.equals("" ) ||
-				strBirthday.equals("" ) || strCity.equals("" ) || strProfImg.equals("" ) ) {
+		if (strUserName.equals("" ) || strPwd.equals("" ) || strTel.equals(""
+        ) || strFirstName.equals("" ) || strLastName.equals("" ) ||
+                strBirthday.equals("" ) || strCity.equals("" ) || strProfImg
+                .equals("" ) ) {
 			JOptionPane.showMessageDialog(null, 
 					"You have to fill out all these blanks.", "Warning",
 					JOptionPane.WARNING_MESSAGE );
@@ -156,13 +158,14 @@ public class RegisterView extends JFrame {
 		}
 
 		if (!strPwd.equals(strPwd0 ) ) {
-			JOptionPane.showMessageDialog(null, "Password does not match", "Error",
-					JOptionPane.WARNING_MESSAGE );
+			JOptionPane.showMessageDialog(null, "Password does not match",
+                    "Error", JOptionPane.WARNING_MESSAGE );
 			return;
 		}
 		
 		if (!strTel.startsWith("44" ) ) {
-			JOptionPane.showMessageDialog(null, "!telephone.startsWith(\"44\" ) ", "Error",
+			JOptionPane.showMessageDialog(null, "!telephone.startsWith(\"44\"" +
+                            " ) ", "Error",
 					JOptionPane.WARNING_MESSAGE );
 			return;
 		}
@@ -189,9 +192,9 @@ public class RegisterView extends JFrame {
 		} else {
 			JOptionPane.showMessageDialog(
 					null, 
-					"Congrats, you have created an account named " + strUserName, 
-					"User Registration",
-				JOptionPane.WARNING_MESSAGE );
+					"Congrats, you have created an account named " +
+                            strUserName, "User Registration", JOptionPane
+                            .WARNING_MESSAGE );
 			
 			r.createNewUser();
 			new ProfileView(p ).setVisible(true );
@@ -202,7 +205,8 @@ public class RegisterView extends JFrame {
 	private void cancelBtnClick() {
 		
 		if (JOptionPane.YES_OPTION != JOptionPane.showConfirmDialog(
-				null, "Are you sure?", "Warning", JOptionPane.YES_NO_OPTION ) ) {
+				null, "Are you sure?", "Warning", JOptionPane.YES_NO_OPTION )
+                ) {
 			return;
 		}
 		

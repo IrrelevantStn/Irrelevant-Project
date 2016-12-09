@@ -10,7 +10,8 @@ public class ContactList {
 	public void addContact(String friend) throws UserDoesNotExistException{
 		Node n = Graph.findNode(friend);
 		if(n == null){
-			throw new UserDoesNotExistException("User does not exist in the system.");
+			throw new UserDoesNotExistException("User does not exist in the " +
+                    "system.");
 		} else {
 			m_contactList.add(n.getElement());
 			System.out.println("Friend: " + friend +" successfully added");
@@ -32,7 +33,8 @@ public class ContactList {
 		}
 		
 		if(friend == null){
-			throw new UserDoesNotExistException(name + " is not in your contact list");
+			throw new UserDoesNotExistException(name + " is not in your " +
+                    "contact list");
 		} else {
 		return friend;
 		}

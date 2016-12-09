@@ -35,7 +35,8 @@ public class MainMenuView  {
     public MainMenuView(){
 		name = new JFrame();
 		name.setBounds(new Rectangle(100, 100, 450, 300));
-		name.getContentPane().setLayout(new BoxLayout(name.getContentPane(), BoxLayout.X_AXIS));
+		name.getContentPane().setLayout(new BoxLayout(name.getContentPane(),
+				BoxLayout.X_AXIS));
 	    
 	    contentPane = new JPanel();
 	    contentPane.setBackground(Color.MAGENTA);

@@ -1,87 +1,182 @@
+
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class DrawingPanel extends JPanel{
+
+
+public class DrawingPanel extends JPanel {
+	
+	private final int MAX_POINTS = 10000;
+	private Point[] m_Points = new Point[MAX_POINTS];;
+	private final int OVAL_WIDTH = 4;
+	private final int OVAL_HEIGHT = 4;
+	private int m_PointCount = 0;
+	
+	private ArrayList<Profile> authors = new ArrayList<Profile>();
+	private String filepath = "";
+	
+	private BufferedImage image;
+	private Color colour = Color.RED;
+
+	//////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////
+	
+	public Color getColour() {
+		return colour;
+	}
+	
+	public void setColour(String colour) {
+		
+		switch(colour) {
+		
+		case "Black" :  this.colour = Color.BLACK;
+						break;
+		case "Blue"  :  this.colour = Color.BLUE;
+						break;
+		case "Red" :  	this.colour = Color.RED;
+						break;
+		case "Green"  : this.colour = Color.GREEN;
+						break;
+		case "Yellow" : this.colour = Color.YELLOW;
+						break;
+		case "Orange"  : this.colour = Color.ORANGE;
+						break;
+		default :       this.colour = Color.BLACK;
+						break;
+		}
+		
+	}
+	public String getFileName() {
+		return this.filepath;
+	}
+	
+	public void setFileName(String path) {
+		this.filepath = path;
+	}
 	
 	
-	 private BufferedImage image;
-	 private Color colour = Color.BLACK;
-	 
-	 
-	 
-	 public Color getColour() {
-		 return colour;
-	 }
-	 public void setColour(Color colour) {
-		 this.colour = colour;
-	 }
-	 
-	 
-	 
-	    public DrawingPanel() {
-	       
-	    	
-	    	image = new BufferedImage(700,600,BufferedImage.TYPE_INT_ARGB);
-	    	
-	    	/*
-	    	try {                
-	          image = ImageIO.read(new File("C:\\Users\\ryanx\\Desktop\\picture.png"));
-	          
-	       } catch (IOException ex) {
-	            // handle exception...
-	       }
-	       */
-	    }
+	public ArrayList<Profile> getAuthors() {
+		return this.authors;
+	}
+	public void setAuthors(ArrayList<Profile> profiles) {
+		this.authors = profiles;
+	}
+	public void addAuthor(Profile profile) {
+		this.authors.add(profile);
+	}
 	
+	public DrawingPanel() {
+
+		image = new BufferedImage(700, 600, BufferedImage.TYPE_INT_ARGB);
+
+	}
+
 	@Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, this); // see javadoc for more info on the parameters            
-    }
-	
-	public void drawLine(int startX,int startY, int endX, int endY) {
-		
-	    Graphics g = image.getGraphics();
-	    
-	    g.setColor(colour);
-	    g.drawLine(startX, startY, endX, endY);
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(image, 0, 0, this); // see javadoc for more info on the
+										// parameters
+
+		g.setColor(colour);
+
+		for (int i = 0; i < this.getPointCount(); i++) {
+
+			g.fillOval(getPoints()[i].x, /* upper-left x coord */
+					getPoints()[i].y, /* upper-left y coord */
+					OVAL_WIDTH, OVAL_HEIGHT);
+		}
+
 		g.dispose();
-		
-		
-		
 		repaint();
-		
 	}
-	
-	public void sprayCan(int x,int y) {
+
+	public void drawLine(int startX, int startY, int endX, int endY) {
+
 		Graphics g = image.getGraphics();
-	    g.setColor(colour);
-	    
-	    
-	    
-	    g.fillOval(x, y, 5, 5);
+
+		StraightLine line = new StraightLine(startX,startY,endX,endY);
+		line.setColour(colour);
+		line.drawLine(g);
+		/*
+		g.setColor(colour);
+		g.drawLine(startX, startY, endX, endY);
 		g.dispose();
-		
+		*/
+		repaint();
+
 	}
-	
-	
-	
-	
+
+	public int getPointCount() {
+		return m_PointCount;
+	}
+
+	/**
+	 * @return TRUE on success
+	 */
+	public boolean incrementPointCount() {
+		m_PointCount++;
+		return true;
+	}
+
+	/**
+	 * @return the current number of points
+	 */
+	public Point[] getPoints() {
+		return m_Points;
+	}
+
+	/**
+	 * @return TRUE on success
+	 */
+	public boolean setPoint(Point point) {
+		boolean test = false;
+		if (test) {
+			System.out.println("PaintPanel::setPoint() - " + m_PointCount + ", " + point.toString());
+		}
+		m_Points[getPointCount()] = point;
+		return true;
+	}
+
 	public void loadDrawing(String fileName) throws IOException {
 		image = ImageIO.read(new File(fileName));
 		repaint();
-}
+	}
 
-	// Needs to be modified
-	public void saveDrawing() throws IOException {
-		ImageIO.write(image, "PNG", new File("temp" + ".png"));
-}
+	
+	public void saveDrawing(String filename) throws IOException {
+
+		BufferedImage buffer = new BufferedImage(this.getSize().width, this.getSize().height,
+				BufferedImage.TYPE_INT_ARGB);
+		Graphics g = buffer.createGraphics();
+		this.paint(g);
+		g.dispose();
+		
+		String file = "src\\" + filename + ".png"; 
+		try {
+			
+			ImageIO.write(buffer, "png", new File(file));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//Code for writing to textfile including names of users involved
+		setFileName(file);
+		
+		FileWriter write = new FileWriter();
+		write.writeDrawing(this);
+		
+
+	}
 
 }

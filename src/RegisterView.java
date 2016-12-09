@@ -1,3 +1,5 @@
+
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Panel;
@@ -30,7 +32,7 @@ public class RegisterView extends JFrame {
 	public static void main(String[] args ) {
 		new RegisterView(null ).setVisible(true );
 	}
-	//TODO Method too long
+	
 	public RegisterView(JFrame parent ) {
 		this.setSize(WIDTH, HEIGHT );
 		this.setTitle("Sign Up" );
@@ -72,8 +74,8 @@ public class RegisterView extends JFrame {
 				 int r = jfc.showOpenDialog(RegisterView.this );
 				 
 				 if (JFileChooser.APPROVE_OPTION == r ) {
-					 RegisterView.this.profImg.setText(jfc.getSelectedFile()
-							 .getAbsolutePath() );
+					 RegisterView.this.profImg.setText(
+							 jfc.getSelectedFile().getAbsolutePath() );
 				 }
 			}
 		});
@@ -147,10 +149,10 @@ public class RegisterView extends JFrame {
 		String strCity = city.getText();
 		String strProfImg = profImg.getText();
 		
-		if (strUserName.equals("" ) || strPwd.equals("" ) || strTel.equals(""
-        ) || strFirstName.equals("" ) || strLastName.equals("" ) ||
-                strBirthday.equals("" ) || strCity.equals("" ) || strProfImg
-                .equals("" ) ) {
+		if (strUserName.equals("" ) || strPwd.equals("" ) ||
+				strTel.equals("" ) || strFirstName.equals("" ) 
+				|| strLastName.equals("" ) || strBirthday.equals("" ) ||
+				strCity.equals("" ) || strProfImg.equals("" ) ) {
 			JOptionPane.showMessageDialog(null, 
 					"You have to fill out all these blanks.", "Warning",
 					JOptionPane.WARNING_MESSAGE );
@@ -159,19 +161,20 @@ public class RegisterView extends JFrame {
 
 		if (!strPwd.equals(strPwd0 ) ) {
 			JOptionPane.showMessageDialog(null, "Password does not match",
-                    "Error", JOptionPane.WARNING_MESSAGE );
+					"Error", JOptionPane.WARNING_MESSAGE );
 			return;
 		}
 		
 		if (!strTel.startsWith("44" ) ) {
-			JOptionPane.showMessageDialog(null, "!telephone.startsWith(\"44\"" +
-                            " ) ", "Error",
-					JOptionPane.WARNING_MESSAGE );
+			JOptionPane.showMessageDialog(null,
+					"!telephone.startsWith(\"44\" ) ",
+					"Error", JOptionPane.WARNING_MESSAGE );
 			return;
 		}
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy" );
-		Date birthday;
+		Date birthday = null;
+		
 		
 		try {
 			birthday = formatter.parse(strBirthday );
@@ -181,19 +184,22 @@ public class RegisterView extends JFrame {
 		}
 		
 		Profile p = new Profile(strUserName, strPwd, 
-				strFirstName, strLastName, strTel, birthday, strCity, null, strProfImg);
+				strFirstName, strLastName, strTel, birthday,
+				strCity, null, strProfImg );
+	//	p.setProfImg(strProfImg );
 		
 		Register r = new Register(p );
 		if (!r.checkUserName() ) {
 			JOptionPane.showMessageDialog(null, 
 					("User " + strUserName + " already exists"), "Error",
 				JOptionPane.WARNING_MESSAGE );
+			return;
 		} else {
 			JOptionPane.showMessageDialog(
 					null, 
 					"Congrats, you have created an account named " +
-                            strUserName, "User Registration", JOptionPane
-                            .WARNING_MESSAGE );
+					strUserName, "User Registration",
+				JOptionPane.WARNING_MESSAGE );
 			
 			r.createNewUser();
 			new ProfileView(p ).setVisible(true );
@@ -204,8 +210,8 @@ public class RegisterView extends JFrame {
 	private void cancelBtnClick() {
 		
 		if (JOptionPane.YES_OPTION != JOptionPane.showConfirmDialog(
-				null, "Are you sure?", "Warning", JOptionPane.YES_NO_OPTION )
-                ) {
+				null, "Are you sure?", "Warning",
+				JOptionPane.YES_NO_OPTION ) ) {
 			return;
 		}
 		

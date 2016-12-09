@@ -27,7 +27,7 @@ public class Profile {
 	
 	public Profile(String userName, String password, 
 			String firstName, String lastName, String telephone,
-			Date birthday, String city ) {
+			Date birthday, String city, Date lastLogin, String profImg) {
 		
 		this.userName = userName;
 		this.password = password;

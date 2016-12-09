@@ -21,8 +21,7 @@ public class ProfileView extends JFrame {
 	public static void main(String[] args ) {
 		Profile wtz = new Profile("abc", "123456",
 			"Wenting", "Zhang", "44332211", 
-			new Date(), "London" );
-		wtz.setProfImg("/Users/zwt/Desktop/WechatIMG1.jpeg" );
+			new Date(), "London", new Date(), "/Users/zwt/Desktop/WechatIMG1.jpeg" );
 		
 		new ProfileView(wtz).setVisible(true );
 	}

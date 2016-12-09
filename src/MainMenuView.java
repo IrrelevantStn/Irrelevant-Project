@@ -6,12 +6,13 @@ import java.awt.Panel;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.*;
 
-import com.sun.glass.events.MouseEvent;
+
 
 
 public class MainMenuView  {
@@ -24,9 +25,16 @@ public class MainMenuView  {
     private JButton drawingBtn;
     private JButton logoutBtn;
     
+    BtnHandler handler;
+    
     private JFrame name;
 
 	//private static final int WIDTH = 500;
+    
+    
+    public static void main(String[] args) {
+    	MainMenuView main = new MainMenuView(); 
+    }
     
 	
 	/**
@@ -42,6 +50,7 @@ public class MainMenuView  {
 	    contentPane.setBackground(Color.MAGENTA);
 	    
 	    JButton btnContactsbtn = new JButton("contactsBtn");
+	    handler = new BtnHandler(name);
 	    
 	    contactsBtn();
 	    messagesBtn();
@@ -60,45 +69,40 @@ public class MainMenuView  {
     }
 
     private void contactsBtn(){
-	    JButton btnContactsbtn = new JButton("contactsBtn");
+    	contactsBtn = new JButton("contactsBtn");
 		//btnContactsbtn.setBounds(48, 56, 50, 50);
-		name.getContentPane().add(btnContactsbtn,BorderLayout.WEST);
-		BtnHandler handler = new BtnHandler(name);
-		btnContactsbtn.addMouseListener(handler);
+		name.getContentPane().add(contactsBtn,BorderLayout.WEST);
+		contactsBtn.addMouseListener(handler);
 		
 		}
 
     private void messagesBtn(){
-		JButton btnMessagesbtn = new JButton("messagesBtn");
+		messagesBtn = new JButton("messagesBtn");
 		//btnMessagesbtn.setBounds(308, 88, 89, 23);
-		name.getContentPane().add(btnMessagesbtn,BorderLayout.CENTER);
-		BtnHandler handler = new BtnHandler(name);
-		btnMessagesbtn.addMouseListener(handler);
+		name.getContentPane().add(messagesBtn,BorderLayout.CENTER);
+		messagesBtn.addMouseListener(handler);
     }
 
     private void profileBtn(){
-		JButton btnProfilebtn = new JButton("profileBtn");
+		profileBtn = new JButton("profileBtn");
 		//btnProfilebtn.setBounds(203, 29, 89, 23);
-		name.getContentPane().add(btnProfilebtn,BorderLayout.WEST);
-		BtnHandler handler = new BtnHandler(name);
-		btnProfilebtn.addMouseListener(handler);
+		name.getContentPane().add(profileBtn,BorderLayout.WEST);
+		profileBtn.addMouseListener(handler);
     }
 
     private void drawingBtn(){
-		JButton btnDrawingbtn = new JButton("drawingBtn");
+		drawingBtn = new JButton("drawingBtn");
 		//btnDrawingbtn.setBounds(175, 162, 89, 23);
-		name.getContentPane().add(btnDrawingbtn,BorderLayout.EAST);
-		BtnHandler handler = new BtnHandler(name);
-		btnDrawingbtn.addMouseListener(handler);
+		name.getContentPane().add(drawingBtn,BorderLayout.EAST);
+		drawingBtn.addMouseListener(handler);
 	
     }
 
     private void logoutBtn(){
-		JButton btnLogoutbtn = new JButton("logoutBtn");
+		logoutBtn = new JButton("logoutBtn");
 		//btnLogoutbtn.setBounds(308, 210, 89, 23);
-		name.getContentPane().add(btnLogoutbtn,BorderLayout.WEST);
-		BtnHandler handler = new BtnHandler(name);
-		btnLogoutbtn.addMouseListener(handler);
+		name.getContentPane().add(logoutBtn,BorderLayout.WEST);
+		logoutBtn.addMouseListener(handler);
     }
     
     
@@ -115,49 +119,54 @@ public class MainMenuView  {
 		}
 
 		@Override
-		public void mouseDragged(java.awt.event.MouseEvent arg0) {
+		public void mouseDragged(MouseEvent arg0) {
 			// TODO Auto-generated method stub
 			
 		}
 		@Override
-		public void mouseMoved(java.awt.event.MouseEvent e) {
+		public void mouseMoved(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 		@Override
-		public void mouseClicked(java.awt.event.MouseEvent e) {
+		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 			if (e.getSource() == contactsBtn) {
 				//ContactsView view = new ContactsView();
+				System.out.println("Contacts");
 			}else if (e.getSource() == messagesBtn) {
 				//MessagesView view = new MessagesView();
+				System.out.println("Message");
 			}else if (e.getSource() == profileBtn) {
 				//ProfileView view = new ProfileView(getProfile());
+				System.out.println("Profile");
 			}else if (e.getSource() == drawingBtn) {
 				//DrawingView view = new DrawingView();
+				System.out.println("Drawing");
 			}else if(e.getSource() == logoutBtn) {
 				//LoginView view = new LoginView();
+				System.out.println("Logout");
 			}
 			
 		}
 		@Override
-		public void mouseEntered(java.awt.event.MouseEvent e) {
+		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 		@Override
-		public void mouseExited(java.awt.event.MouseEvent e) {
+		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 		@Override
-		public void mousePressed(java.awt.event.MouseEvent e) {
+		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 		@Override
-		public void mouseReleased(java.awt.event.MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}

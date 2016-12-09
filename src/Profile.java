@@ -37,8 +37,8 @@ public class Profile {
 		this.birthday = birthday;
 		this.city = city;
 //		newMessages = 0;
-		lastLogin = new Date();
-		profImg = "default.jpg";
+		this.lastLogin = new Date();
+		this.profImg = profImg;
 		
 	}
 	

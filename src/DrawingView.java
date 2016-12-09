@@ -208,7 +208,7 @@ public class DrawingView extends JFrame {
 	public JComboBox<String> getChooseColour() {
 		return m_chooseColour;
 	}
-	public void setChooseColour(JComboBox box) {
+	public void setChooseColour(JComboBox<String> box) {
 		m_chooseColour = box;
 	}
 	
@@ -408,7 +408,7 @@ public class DrawingView extends JFrame {
 		
 		if (drawMode == 0) {
 			
-			if (isStart == true) {
+			if (isStart) {
 
 			startX = x;
 			startY = y;

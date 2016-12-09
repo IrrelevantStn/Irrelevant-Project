@@ -1,13 +1,10 @@
+
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Profile {
 	
-//	public static void main(String[] args ) {
-//		System.out.println(new Profile("abc", "123456",
-//				"Wenting", "Zhang", "44332211", 
-//				new Date(), "London" ) );
-//	}
 	
 	public Profile(String userName, String password ) {
 		
@@ -19,7 +16,6 @@ public class Profile {
 		telephone = "";
 		birthday = new Date();
 		city = "";
-//		newMessages = 0;
 		lastLogin = new Date();
 		profImg = null;
 		
@@ -27,7 +23,7 @@ public class Profile {
 	
 	public Profile(String userName, String password, 
 			String firstName, String lastName, String telephone,
-			Date birthday, String city, Date lastLogin, String profImg) {
+			Date birthday, String city ,Date lastLogin,String profImg) {
 		
 		this.userName = userName;
 		this.password = password;
@@ -36,7 +32,6 @@ public class Profile {
 		this.telephone = telephone;
 		this.birthday = birthday;
 		this.city = city;
-//		newMessages = 0;
 		this.lastLogin = new Date();
 		this.profImg = profImg;
 		
@@ -87,14 +82,6 @@ public class Profile {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
-//	public int getNewMessages() {
-//		return newMessages;
-//	}
-//	public void setNewMessages(int newMessages) {
-//		this.newMessages = newMessages;
-//	}
-	
 	public Date getLastLogin() {
 		return lastLogin;
 	}
@@ -129,7 +116,6 @@ public class Profile {
 	private String telephone;
 	private Date birthday;
 	private String city;
-//	private int newMessages;
 	private Date lastLogin;
 	private String profImg;
 	

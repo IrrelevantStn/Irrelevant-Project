@@ -181,8 +181,7 @@ public class RegisterView extends JFrame {
 		}
 		
 		Profile p = new Profile(strUserName, strPwd, 
-				strFirstName, strLastName, strTel, birthday, strCity );
-		p.setProfImg(strProfImg );
+				strFirstName, strLastName, strTel, birthday, strCity, null, strProfImg);
 		
 		Register r = new Register(p );
 		if (!r.checkUserName() ) {

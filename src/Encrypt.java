@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 public class Encrypt
 {
     public String hashPrep(Object objectToHash){
-        return objectToHash.toString();
+        return hashingFunction(objectToHash.toString());
     }
 
     public String hashingFunction(String stringToHash){

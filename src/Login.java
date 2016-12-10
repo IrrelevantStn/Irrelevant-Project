@@ -1,15 +1,16 @@
 import java.io.*;
 public class Login {
-	private FileReader fr;
+	FileReader fr;
 	
-	public void loginDetailsCorrect(String u, String p){
+	public boolean loginDetailsCorrect(String u, String p){
 		if(fr.readLogin(u, p)){
-			MainMenuView();
+			return true;
 		}else{
-			LoginView("Failed Login");
+			return false;
 		}
 	
 	}
 	
 
 }
+

@@ -16,7 +16,8 @@ public class Register {
 		}
 
 		profiles.add(m_NewProfile);
-		new FileWriter().writeProfiles(profiles);
+		//TODO
+		//new FileWriter().writeProfiles(profiles);
 
 	}
 

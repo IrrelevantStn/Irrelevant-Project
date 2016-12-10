@@ -1,16 +1,11 @@
-import java.io.*;
+import java.util.Objects;
+
 public class Login {
-	FileReader fr;
+	FileReader fr = new FileReader();
 	
 	public boolean loginDetailsCorrect(String u, String p){
-		if(fr.readLogin(u, p)){
-			return true;
-		}else{
-			return false;
-		}
-	
+        //System.out.println("In loginDetails");
+        return Objects.equals(fr.readPassword(u), p);
 	}
-	
-
 }
 

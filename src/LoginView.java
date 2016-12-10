@@ -1,8 +1,8 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
-import java.awt.event.*;
 
-
-public class LoginView implements ActionListener  {
+public class LoginView extends JPanel {
     private final String USERNAME_INSTRUCTIONS = "Enter Username: ";
     private final String PASSWORD_INSTRUCTIONS = "Enter Password: ";
     private final String ERROR_MESSAGE = "Failed Login";
@@ -15,13 +15,8 @@ public class LoginView implements ActionListener  {
     private JPasswordField passwordField;
     private JButton loginBtn = new JButton("Login");
     private Login login = new Login();
-    
-    public static void main(String[] args){
-    	LoginView l = new LoginView();
-    }
-    
 
-    private LoginView(){
+    public LoginView(){
     	contentPane.setLayout(null);
     	frame.setTitle("Login");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,34 +25,37 @@ public class LoginView implements ActionListener  {
     	userNameField = new JTextField();
     	passwordField = new JPasswordField();
     	usernameLbl.setBounds(50, 50, 100, 30);
-	passwordLbl.setBounds(50, 100, 100, 30);
-	userNameField.setBounds(200, 50, 100, 30);
-	passwordField.setBounds(200, 100, 100, 30);
-	loginBtn.setBounds(200, 170, 100, 30);
-	errorMessageLbl.setBounds(200, 120, 200, 50);
-	contentPane.add(usernameLbl);
-	contentPane.add(passwordLbl);
-	contentPane.add(errorMessageLbl);
-	contentPane.add(userNameField);
-	contentPane.add(passwordField);
-	contentPane.add(loginBtn);
-	loginBtn.addActionListener(new ActionListener(){
-    		
+		passwordLbl.setBounds(50, 100, 100, 30);
+		userNameField.setBounds(200, 50, 100, 30);
+		passwordField.setBounds(200, 100, 100, 30);
+		loginBtn.setBounds(200, 170, 100, 30);
+		errorMessageLbl.setBounds(200, 120, 200, 50);
+		contentPane.add(usernameLbl);
+		contentPane.add(passwordLbl);
+		contentPane.add(errorMessageLbl);
+		contentPane.add(userNameField);
+		contentPane.add(passwordField);
+		contentPane.add(loginBtn);
+
+		loginBtn.addActionListener(new ActionListener(){
 			@Override
-    		public void actionPerformed(ActionEvent e){
+    		public void actionPerformed (ActionEvent e){
 				if (e.getSource() == loginBtn){
 					String username = userNameField.getText();
 					String password = String.valueOf(passwordField.getPassword());
+					//System.out.println(username);
+					//System.out.println(password);
 					if(login.loginDetailsCorrect(username, password)){
-						MainMenuView();
+						//System.out.println("Correct Password");
+						MainMenuView main = new MainMenuView();
 					}else{
+						//System.out.println("Incorrect Password");
 						errorMessageLbl.setText(ERROR_MESSAGE);
 					}
-              			 }
+				}
     		}
     	});
-	frame.setVisible(true);
-		
+		frame.setVisible(true);
     }   
 } 
 	

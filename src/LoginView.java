@@ -1,6 +1,5 @@
 import javax.swing.*;
-import java.awt.Event.*;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 
 public class LoginView implements ActionListener  {
@@ -15,13 +14,12 @@ public class LoginView implements ActionListener  {
     private String errorMessage = "ERROR MESSAGE";
     private JTextField userNameField;
     private JPasswordField passwordField;
-    private JButton loginBtn;
+    private JButton loginBtn = new JButton("Login");
     private JButton exitBtn;
     private Login login = new Login();
     
     public static void main(String[] args){
     	LoginView l = new LoginView();
-    	
     }
     
 
@@ -33,24 +31,24 @@ public class LoginView implements ActionListener  {
     	errorMessageLbl = new JLabel(errorMessage);
     	userNameField = new JTextField();
     	passwordField = new JPasswordField();
-    	loginBtn = new JButton("Login");
     	exitBtn = new JButton("Exit");
-		usernameLbl.setBounds(50, 50, 100, 30);
-		passwordLbl.setBounds(50, 100, 100, 30);
-		userNameField.setBounds(200, 50, 100, 30);
-		passwordField.setBounds(200, 100, 100, 30);
-		loginBtn.setBounds(200, 170, 100, 30);
-		exitBtn.setBounds(150, 400, 100, 50);
-		errorMessageLbl.setBounds(200, 120, 200, 50);
-		contentPane.add(usernameLbl);
-		contentPane.add(passwordLbl);
-		contentPane.add(errorMessageLbl);
-		contentPane.add(userNameField);
-		contentPane.add(passwordField);
-		contentPane.add(loginBtn);
-		contentPane.add(exitBtn);
-		loginBtn.addActionListener(new ActionListener(){
-    		@Override
+	usernameLbl.setBounds(50, 50, 100, 30);
+	passwordLbl.setBounds(50, 100, 100, 30);
+	userNameField.setBounds(200, 50, 100, 30);
+	passwordField.setBounds(200, 100, 100, 30);
+	loginBtn.setBounds(200, 170, 100, 30);
+	exitBtn.setBounds(150, 400, 100, 50);
+	errorMessageLbl.setBounds(200, 120, 200, 50);
+	contentPane.add(usernameLbl);
+	contentPane.add(passwordLbl);
+	contentPane.add(errorMessageLbl);
+	contentPane.add(userNameField);
+	contentPane.add(passwordField);
+	contentPane.add(loginBtn);
+	contentPane.add(exitBtn);
+	loginBtn.addActionListener(new ActionListener(){
+    		
+			@Override
     		public void actionPerformed(ActionEvent e){
 				if (e.getSource() == loginBtn){
 					errorMessageLbl.setText("button pressed");// to test button functionality
@@ -61,23 +59,8 @@ public class LoginView implements ActionListener  {
     }
     		}
     	});
-		frame.setVisible(true);
+	frame.setVisible(true);
 		
-    }
-
-    private void loginButton(){
-    	
-    }
-    
-//    private void exitButton(){
-//		exitBtn.addEventListener(new EventListener(){
-//    		public void actionPerformed(ActionEvent e){
-//				if (e.getSource() == exitBtn){
-//					setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//				}
-//    		}
-//		}
-//    }
-//    
+    }   
+} 
 	
-}

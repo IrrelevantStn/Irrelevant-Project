@@ -183,7 +183,7 @@ public class FileReader {
 				
 			}
 			
-			conversation.addMessage(msg);
+			conversation.addNewMessage(msg);
 			
 			
 		}

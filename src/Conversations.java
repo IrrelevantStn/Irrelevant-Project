@@ -23,7 +23,7 @@ public class Conversations {
 		}
 		else{
 			System.out.println("Didn't work, check the type of Message. " +
-					"*shrug*")
+					"*shrug*");
 		}
 	}
 }

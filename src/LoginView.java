@@ -5,13 +5,12 @@ import java.awt.event.*;
 public class LoginView implements ActionListener  {
     private final String USERNAME_INSTRUCTIONS = "Enter Username: ";
     private final String PASSWORD_INSTRUCTIONS = "Enter Password: ";
-    private final String PROGRAM_NAME = "Skypertawe";
+    private final String ERROR_MESSAGE = "Failed Login";
     private JFrame frame = new JFrame();
     private JPanel contentPane = new JPanel();
     private JLabel usernameLbl = new JLabel(USERNAME_INSTRUCTIONS);
     private JLabel passwordLbl = new JLabel(PASSWORD_INSTRUCTIONS);
-    private JLabel errorMessageLbl;
-    private String errorMessage = "ERROR MESSAGE";
+    private JLabel errorMessageLbl = new JLabel();
     private JTextField userNameField;
     private JPasswordField passwordField;
     private JButton loginBtn = new JButton("Login");
@@ -28,7 +27,6 @@ public class LoginView implements ActionListener  {
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setBounds(100,100,600,300);
     	frame.add(contentPane);
-    	errorMessageLbl = new JLabel(errorMessage);
     	userNameField = new JTextField();
     	passwordField = new JPasswordField();
     	usernameLbl.setBounds(50, 50, 100, 30);
@@ -48,12 +46,14 @@ public class LoginView implements ActionListener  {
 			@Override
     		public void actionPerformed(ActionEvent e){
 				if (e.getSource() == loginBtn){
-					errorMessageLbl.setText("button pressed");// to test button functionality
-					System.out.println("button pressed");     // ''
 					String username = userNameField.getText();
 					String password = String.valueOf(passwordField.getPassword());
-					login.loginDetailsCorrect(username, password);
-       }
+					if(login.loginDetailsCorrect(username, password)){
+						MainMenuView();
+					}else{
+						errorMessageLbl.setText(ERROR_MESSAGE);
+					}
+              			 }
     		}
     	});
 	frame.setVisible(true);

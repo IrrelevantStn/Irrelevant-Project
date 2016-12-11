@@ -28,10 +28,6 @@ public class Spray {
 	 * @return TRUE on success
 	 */
 	public boolean setPoint(Point point) {
-		boolean test = false;
-		if (test) {
-			System.out.println("PaintPanel::setPoint() - " + m_PointCount + ", " + point.toString());
-		}
 		m_Points[getPointCount()] = point;
 		return true;
 	}

@@ -1,31 +1,14 @@
 
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-
 
 import java.awt.Color;
 
@@ -40,10 +23,6 @@ public class DrawingView extends JFrame {
 	}
 
 	public Boolean setFileField(JTextField field) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setFileField() BEGIN");
-		}
 		m_filename = field;
 		return true;
 	}
@@ -58,10 +37,6 @@ public class DrawingView extends JFrame {
 	}
 
 	public Boolean setFileNameLbl(JLabel lbl) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setTitleLabel() BEGIN");
-		}
 		m_filenameLbl = lbl;
 		return true;
 	}
@@ -72,10 +47,6 @@ public class DrawingView extends JFrame {
 	}
 
 	public Boolean setTitleLbl(JLabel lbl) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setTitleLabel() BEGIN");
-		}
 		m_titleLbl = lbl;
 		return true;
 	}
@@ -101,46 +72,26 @@ public class DrawingView extends JFrame {
 	}
 
 	public Boolean setLoadLbl(JLabel lbl) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setLoadLabel() BEGIN");
-		}
 		m_loadLbl = lbl;
 		return true;
 	}
 
 	public Boolean setLineLbl(JLabel lbl) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setLineLabel() BEGIN");
-		}
 		m_lineLbl = lbl;
 		return true;
 	}
 
 	public Boolean setParticleLbl(JLabel lbl) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setParticleLabel() BEGIN");
-		}
 		m_particleLbl = lbl;
 		return true;
 	}
 
 	public Boolean setColorLbl(JLabel lbl) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setColorLabel() BEGIN");
-		}
 		m_colorLbl = lbl;
 		return true;
 	}
 
 	public Boolean setSaveLbl(JLabel lbl) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setSaveLabel() BEGIN");
-		}
 		m_saveLbl = lbl;
 		return true;
 	}
@@ -166,37 +117,21 @@ public class DrawingView extends JFrame {
 	}
 
 	public Boolean setLoadBtn(JButton btn) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setLoadBtn() BEGIN");
-		}
 		m_loadBtn = btn;
 		return true;
 	}
 
 	public Boolean setLineBtn(JButton btn) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setLineBtn() BEGIN");
-		}
 		m_lineBtn = btn;
 		return true;
 	}
 
 	public Boolean setParticleBtn(JButton btn) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setParticleBtn() BEGIN");
-		}
 		m_particleBtn = btn;
 		return true;
 	}
 
 	public Boolean setSaveBtn(JButton btn) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setSaveBtn() BEGIN");
-		}
 		m_saveBtn = btn;
 		return true;
 	}
@@ -222,19 +157,11 @@ public class DrawingView extends JFrame {
 	}
 
 	public Boolean setChooseDrawings(JComboBox<String> combo) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setChooseDrawings() BEGIN");
-		}
 		m_chooseDrawings = combo;
 		return true;
 	}
 
 	public Boolean setChooseColorBtn(JButton btn) {
-		boolean test = true;
-		if (test || m_Trace) {
-			System.out.println("DrawingView::setChooseColor() BEGIN");
-		}
 		m_chooseColor = btn;
 		return true;
 	}
@@ -416,8 +343,8 @@ public class DrawingView extends JFrame {
 			this.validate();
 			this.repaint();
 			isStart = false;
-
-		} else {
+			}
+			else {
 			endX = x;
 			endY = y;
 			this.remove(particle);
@@ -430,26 +357,15 @@ public class DrawingView extends JFrame {
 			m_contentPane.repaint();
 			repaint();
 			drawMode = -1;
-			
+			}
 		}
-			
-			
-			
-			
-			
-		}
-		
-
 	}
 	
 	public void drawParticles(int x, int y) {
-		
-		
 		m_contentPane.validate();
 		m_contentPane.repaint();
 		repaint();
 	}
-
 
 	private class BtnHandler implements MouseListener,MouseMotionListener {
 
@@ -457,17 +373,10 @@ public class DrawingView extends JFrame {
 		
 		public BtnHandler(JFrame frame) {
 			this.frame = frame;
-			
 		}
 
 		@Override
 	      public void mouseDragged(MouseEvent event) {
-
-	          boolean test = false;
-	          if (test) {
-	            System.out.println("PaintHandler::mouseDragged() " + event.toString());
-	          }
-
 	          if (drawMode == 1) {
 	        	  
 	        	  if ( m_contentPane.getPointCount() < m_contentPane.getPoints().length ) {
@@ -509,17 +418,14 @@ public class DrawingView extends JFrame {
 			} else if (e.getSource() == getParticleBtn()) {
 				//Spray can code here
 				drawMode = 1;
-				
 			} else if (e.getSource() == getLoadBtn()) {
 				//load the drawing
 				try {
-					
 					m_contentPane.loadDrawing(m_chooseDrawings.getSelectedItem().toString());
 					
 				} catch (IOException exception) {
 					System.out.println("Could not load the file");
 				}
-				
 			} else if (e.getSource() == getSaveBtn()) {
 				//save the drawing
 				try {
@@ -527,7 +433,6 @@ public class DrawingView extends JFrame {
 				} catch(IOException exception) {
 					System.out.println("Could not save the file");
 				}
-				
 			}	
 		}
 
@@ -543,7 +448,6 @@ public class DrawingView extends JFrame {
 			} else {
 				drawParticles(e.getX(),e.getY());
 			}
-			
 		}
 
 
@@ -551,65 +455,46 @@ public class DrawingView extends JFrame {
 	        * This method is defined in MouseMotionListener.
 	        */
 		@Override
-	       public void mouseMoved(MouseEvent event) {
-
-	          boolean test = false;
-	          if (test) {
-	            System.out.println("PaintHandler::mouseMoved() " + event.toString());
-	          }
-	          
-	          if (drawMode == 1) {
+		public void mouseMoved(MouseEvent event) {
+			if (drawMode == 1) {
 	        	  drawParticles(event.getX(),event.getY());
-	          }
-	          
-	          
-	       }
+			}
+		}
 
 	       /**
 	        * This method is defined in MouseListener.
 	        */
 		@Override
-	       public void mouseEntered(MouseEvent event) {
-
-	          boolean test = true;
-	          if (test) {
+		public void mouseEntered(MouseEvent event) {
+			boolean test = true;
+			if (test) {
 	            System.out.println("PaintHandler::mouseEntered() " + event.toString());
-	          }
-	       }
+			}
+		}
 
 	       /**
 	        * This method is defined in MouseListener.
 	        */
 		@Override
-	       public void mouseExited(MouseEvent event) {
+		public void mouseExited(MouseEvent event) {
 
-	          boolean test = true;
-	          if (test) {
-	            System.out.println("PaintHandler::mouseExited() " + event.toString());
-	          }
-	       }
-
-
-
+			boolean test = true;
+			if (test) {
+				System.out.println("PaintHandler::mouseExited() " + event.toString());
+			}
+		}
 
 	       /**
 	        * This method is defined in MouseListener.
 	        */
 		@Override
-	          public void mouseReleased(MouseEvent event) {
-
-	        	  boolean test = true;
-	        	  if (test) {
-	        		  System.out.println("PaintHandler::mouseReleased() " + event.toString());
-	        	  }
-	        		  
-	        	  
-	          }
-		
-		
+		public void mouseReleased(MouseEvent event) {
+			boolean test = true;
+			if (test) {
+				System.out.println("PaintHandler::mouseReleased() " + event.toString());
+			}
+		}
 	} 
-
-	
 
 	private Boolean isStart = true;
 	private int drawMode = -1;  // -1 for nothing, 0 for straight line, 1 for Spray Can 

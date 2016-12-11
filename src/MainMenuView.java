@@ -25,6 +25,7 @@ public class MainMenuView  {
     private JButton drawingBtn;
     private JButton logoutBtn;
     
+    
     BtnHandler handler;
     
     private JFrame name;
@@ -61,7 +62,7 @@ public class MainMenuView  {
 	    Panel p1 = new Panel();
 	    
 	    p1.add(btnContactsbtn);
-	   // p1.add();
+	    //p1.add();
 
 	    
 	    name.setVisible(true);
@@ -131,17 +132,18 @@ public class MainMenuView  {
 				//ContactsView view = new ContactsView();
 				System.out.println("Contacts");
 			}else if (e.getSource() == messagesBtn) {
-				//MessagesView view = new MessagesView();
+				MessagesView view = new MessagesView();
 				System.out.println("Message");
 			}else if (e.getSource() == profileBtn) {
-				ProfileView view = new ProfileView(getProfile());
+				ProfileView view = new ProfileView(prof);
 				System.out.println("Profile");
 			}else if (e.getSource() == drawingBtn) {
-				DrawingView view = new DrawingView();
+				DrawingView view = new DrawingView(users,prof);
 				System.out.println("Drawing");
 			}else if(e.getSource() == logoutBtn) {
 				LoginView view = new LoginView();
 				System.out.println("Logout");
+
 			}
 			
 		}
@@ -167,6 +169,10 @@ public class MainMenuView  {
 		}
     
     }
+    
+    private Graph users = new Graph();
+    private Profile prof;
+    
 }
 
 

@@ -27,11 +27,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class MessagesView extends JFrame {
-
-	public static void main(String[] args) {
-		MessagesView test = new MessagesView();
-	}
-
 	public MessagesView() {
 
 		//Setting up JFrame

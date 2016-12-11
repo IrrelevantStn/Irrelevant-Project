@@ -152,8 +152,7 @@ public class DrawingPanel extends JPanel {
 		setFileName(file);
 		
 		FileWriter write = new FileWriter();
-		//TODO
-		//write.writeDrawing(this);
+		write.writeDrawing(this);
 		
 
 	}

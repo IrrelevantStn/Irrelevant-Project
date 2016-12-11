@@ -4,10 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileReader {
 
@@ -149,7 +146,7 @@ public class FileReader {
 			String[] lineArray = line.split(",");
 			Boolean isRequest;
 			
-			if (lineArray[2] == "true") {
+			if (Objects.equals(lineArray[2], "true")) {
 				isRequest = true;
 			} else isRequest = false;
 			

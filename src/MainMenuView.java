@@ -29,7 +29,7 @@ public class MainMenuView  {
     
     private JFrame name;
 
-
+	//private static final int WIDTH = 500;
     
     
     public static void main(String[] args) {
@@ -70,6 +70,7 @@ public class MainMenuView  {
 
     private void contactsBtn(){
     	contactsBtn = new JButton("contactsBtn");
+		//btnContactsbtn.setBounds(48, 56, 50, 50);
 		name.getContentPane().add(contactsBtn,BorderLayout.WEST);
 		contactsBtn.addMouseListener(handler);
 		
@@ -77,18 +78,21 @@ public class MainMenuView  {
 
     private void messagesBtn(){
 		messagesBtn = new JButton("messagesBtn");
+		//btnMessagesbtn.setBounds(308, 88, 89, 23);
 		name.getContentPane().add(messagesBtn,BorderLayout.CENTER);
 		messagesBtn.addMouseListener(handler);
     }
 
     private void profileBtn(){
 		profileBtn = new JButton("profileBtn");
+		//btnProfilebtn.setBounds(203, 29, 89, 23);
 		name.getContentPane().add(profileBtn,BorderLayout.WEST);
 		profileBtn.addMouseListener(handler);
     }
 
     private void drawingBtn(){
 		drawingBtn = new JButton("drawingBtn");
+		//btnDrawingbtn.setBounds(175, 162, 89, 23);
 		name.getContentPane().add(drawingBtn,BorderLayout.EAST);
 		drawingBtn.addMouseListener(handler);
 	
@@ -96,6 +100,7 @@ public class MainMenuView  {
 
     private void logoutBtn(){
 		logoutBtn = new JButton("logoutBtn");
+		//btnLogoutbtn.setBounds(308, 210, 89, 23);
 		name.getContentPane().add(logoutBtn,BorderLayout.WEST);
 		logoutBtn.addMouseListener(handler);
     }
@@ -134,13 +139,20 @@ public class MainMenuView  {
 				//MessagesView view = new MessagesView();
 				System.out.println("Message");
 			}else if (e.getSource() == profileBtn) {
+<<<<<<< HEAD
 				ProfileView view = new ProfileView(getProfile());
 				System.out.println("Profile");
 			}else if (e.getSource() == drawingBtn) {
 				DrawingView view = new DrawingView();
+=======
+				//ProfileView view = new ProfileView(getProfile());
+				System.out.println("Profile");
+			}else if (e.getSource() == drawingBtn) {
+				//DrawingView view = new DrawingView();
+>>>>>>> parent of f90d6cb... newest changes
 				System.out.println("Drawing");
 			}else if(e.getSource() == logoutBtn) {
-				LoginView view = new LoginView();
+				//LoginView view = new LoginView();
 				System.out.println("Logout");
 			}
 			
@@ -170,4 +182,4 @@ public class MainMenuView  {
 }
 
 
- 
+

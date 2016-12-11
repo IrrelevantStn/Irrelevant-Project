@@ -68,10 +68,13 @@ public class FileReader {
 			last.set(lastLoginDay, lastLoginMonth, lastLoginYear);
 			Date lastLogin = last.getTime();
 			String profImg = userArray[14];
-			
-			Profile temp = new Profile(username,firstName,surname,number,birthday,city,
-					numNewMsg,lastLogin,profImg,userid,password);
+
+            /*TODO
+			Profile temp = new Profile(username,firstName,surname,number,
+                   birthday,city, numNewMsg,lastLogin,profImg,userid,
+                    password);
 			profileList.add(temp);
+			*/
 			
 		}
 		
@@ -80,7 +83,9 @@ public class FileReader {
 
 	}
 
-	public Boolean readLogin(String username, String password) {
+	public String readPassword(String username) {
+        //System.out.println("in readPassword");
+        //return "E";
 
 		Scanner m_in = openFile(profFilePath);
 		
@@ -89,20 +94,13 @@ public class FileReader {
 			String record = m_in.nextLine();
 			String[] recArray = record.split(",");
 
-			if (recArray[0].equalsIgnoreCase(username)) {
-				if (recArray[1].equals(password)) {
-					closeFile(m_in);
-					return true;
-
-				} else
-					closeFile(m_in);
-					return false;
+			if (recArray[0].equals(username)) {
+				closeFile(m_in);
+				return recArray[1];
 			}
-
 		}
 		closeFile(m_in);
-		return false;
-
+		return null;
 	}
 
 	public Graph readUsers(ArrayList<Profile> profiles) {
@@ -130,7 +128,8 @@ public class FileReader {
 			isRequest = Objects.equals(lineArray[2], "true");
 
 			if (username.equals(lineArray[0])) {
-				contacts.addContact(lineArray[1],isRequest);
+                //TODO
+				//contacts.addContact(lineArray[1],isRequest);
 			}
 			
 		}
@@ -138,10 +137,10 @@ public class FileReader {
 		return contacts;
 	}
 
-	public Conversations readConversations() {
+	public Conversations readConversations() throws NullPointerException {
 
 		Scanner m_in = openFile(convFilePath);
-		Conversations conversation = new Conversations();
+		Conversations conversation = null;
 
 		
 		while (m_in.hasNextLine()) {
@@ -169,18 +168,25 @@ public class FileReader {
 						
 			switch (msgType) {
 				
-			case "url" :    msg = new UrlMessage(destination,source,timeStamp,textDesc,data);
+			case "url" :    msg = new UrlMessage(destination,source,
+                    timeStamp,textDesc,data);
 							break;
-			case "text"	:	msg = new TextMessage(destination,source,timeStamp,data);
+			case "text"	:	msg = new TextMessage(destination,source,
+                    timeStamp,data);
 							break;
-			case "file"	:	msg = new FileMessage(destination,source,timeStamp,textDesc,data);
+			case "file"	:	msg = new FileMessage(destination,source,
+                    timeStamp,textDesc,data);
 							break;
 			default		:	break;
 				
 				
 			}
-			
-			conversation.addMessage(msg);
+			try {
+                conversation.addNewMessage(msg);
+            }
+            catch (java.lang.NullPointerException e){
+                System.out.println("Message was unrecognised and Null");
+            }
 			
 			
 		}
@@ -204,7 +210,7 @@ public class FileReader {
 		closeFile(m_in);
 		return usernames;
 	}
-
+	/* TODO
 	public ArrayList<DrawingPalette> readDrawings(Graph users) {
 
 		Scanner m_in = openFile(drawFilePath);
@@ -231,6 +237,6 @@ public class FileReader {
 		
 		closeFile(m_in);
 		return drawingList;
-	}
+	}*/
 
 }

@@ -1,3 +1,4 @@
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
@@ -18,105 +19,74 @@ import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class ProfileView extends JFrame {
-	public static void main(String[] args ) {
-		Profile wtz = new Profile("abc", "123456",
-			"Wenting", "Zhang", "44332211", 
-			new Date(), "London" );
-		wtz.setProfImg("/Users/zwt/Desktop/WechatIMG1.jpeg" );
-		
-		new ProfileView(wtz).setVisible(true );
-	}
-	
+
 	public ProfileView(Profile profile) {
 		Dimension wndSize = new Dimension();
-		
 		wndSize.width = WIDTH;
 		wndSize.height = HEIGHT;
-		this.setSize(wndSize );
-		
-		this.setLayout(null );
-		this.setResizable(false );
-		this.setLocationRelativeTo(null );
-		this.setTitle("UserProfile/" + profile.getUserName() );
+		this.setSize(wndSize);
+		this.setLayout(null);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setTitle("UserProfile/" + profile.getUserName());
 		this.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e ) {
+			public void windowClosing(WindowEvent e) {
 				cancelBtnClick();
 			}
-		} );
+		});
+		this.m_profile = profile;
 		
-		this.profile = profile;
+		m_title = new JLabel("User Profile/" + profile.getUserName());
 		
-		title = new JLabel("User Profile/" + profile.getUserName() );
-		profImg = new JLabel("" );
+		m_profImg = new JLabel("");
+		ImageIcon img = new ImageIcon(profile.getProfImg());
+		img.setImage(img.getImage().getScaledInstance(100, 190,
+				Image.SCALE_DEFAULT));
+		m_profImg.setIcon(img);
 		
-		ImageIcon img = new ImageIcon(profile.getProfImg() );
-		img.setImage(img.getImage().getScaledInstance(100, 190, Image.SCALE_DEFAULT) );
-		
-		profImg.setIcon(img );
-		usrinfo = new JTextArea(profile.toString() );
-		
-		Font font0 = new Font("Sans", Font.BOLD, 40 );
-		Font font1 = new Font("Serif", Font.PLAIN, 22 );
-		
-		title.setFont(font0 );
-		usrinfo.setFont(font1 );
-		usrinfo.setEditable(false );
+		m_usrinfo = new JTextArea(profile.toString());
+
+		Font font0 = new Font("Sans", Font.BOLD, 40);
+		Font font1 = new Font("Serif", Font.PLAIN, 22);
+		m_title.setFont(font0);
+		m_usrinfo.setFont(font1);
+		m_usrinfo.setEditable(false);
 		
 		Panel p0 = new Panel();
-		// p0.setLayout(new GridLayout(1, 2 ) );
-		
-		// p0.add(title );
-		p0.add(profImg );
-		p0.add(usrinfo );
-		p0.setBounds(new Rectangle(0, 20, WIDTH, 200 ) );
-		this.add(p0 );
-		
-		cancelBtn = new JButton("Cancel" );
-		editBtn = new JButton("Edit" );
-		
-		cancelBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0 ) {
+		p0.add(m_profImg);
+		p0.add(m_usrinfo);
+		p0.setBounds(new Rectangle(0, 20, WIDTH, 200));
+		this.add(p0);
+		m_cancelBtn = new JButton("Cancel");
+		m_cancelBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				cancelBtnClick();
 			}
-		} );
-		
-		editBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0 ) {
-				editBtnClick();
-			}
-		} );
+		});
 		
 		Panel p2 = new Panel();
-		
-		p2.add(cancelBtn );
-		p2.add(editBtn );
-		p2.setBounds(new Rectangle(0, 240, WIDTH, 50 ) );
-		this.add(p2 );
+		p2.add(m_cancelBtn);
+		p2.setBounds(new Rectangle(0, 240, WIDTH, 50));
+		this.add(p2);
 	}
 
 	private void cancelBtnClick() {
-		
-		if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(
-			null, "Are you sure?", "Warning", JOptionPane.YES_NO_OPTION ) ) {
-			System.exit(0 );
-		}	
+
+		if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null,
+				"Are you sure?", "Warning",JOptionPane.YES_NO_OPTION)) {
+			System.exit(0);
+		}
 	}
 
-	private void editBtnClick() {
-		
-	}
-	
 	@SuppressWarnings("unused")
-	private Profile profile;
-	
-	private JLabel title;
-	private JLabel profImg;
-	private JTextArea usrinfo;
-	
-	private JButton cancelBtn;
-	private JButton editBtn;
-	
+	private Profile m_profile;
+
+	private JLabel m_title;
+	private JLabel m_profImg;
+	private JTextArea m_usrinfo;
+
+	private JButton m_cancelBtn;
+
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 340;
 }
-

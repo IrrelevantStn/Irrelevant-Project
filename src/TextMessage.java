@@ -1,7 +1,8 @@
 import java.util.Date;
 
 public class TextMessage extends Message{
-    protected TextMessage(String destination, String source, Date timestamp, String contentText) {
+    protected TextMessage(String destination, String source, Date timestamp,
+                          String contentText) {
         super(destination, source, timestamp);
         textFormatting(contentText);
     }

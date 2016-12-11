@@ -1,136 +1,113 @@
+
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Profile {
-	
-//	public static void main(String[] args ) {
-//		System.out.println(new Profile("abc", "123456",
-//				"Wenting", "Zhang", "44332211", 
-//				new Date(), "London" ) );
-//	}
-	
-	public Profile(String userName, String password ) {
-		
-		this.userName = userName;
-		this.password = password;
 
-		firstName = "";
-		lastName = "";
-		telephone = "";
-		birthday = new Date();
-		city = "";
-//		newMessages = 0;
-		lastLogin = new Date();
-		profImg = null;
-		
+	public Profile(String userName, String password, String firstName,
+			String lastName, String telephone, Date birthday,
+			String city, Date lastLogin, String profImg) {
+
+		this.m_userName = userName;
+		this.m_password = password;
+		this.m_firstName = firstName;
+		this.m_lastName = lastName;
+		this.m_telephone = telephone;
+		this.m_birthday = birthday;
+		this.m_city = city;
+		this.m_lastLogin = new Date();
+		this.m_profImg = profImg;
+
 	}
-	
-	public Profile(String userName, String password, 
-			String firstName, String lastName, String telephone,
-			Date birthday, String city ) {
-		
-		this.userName = userName;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.telephone = telephone;
-		this.birthday = birthday;
-		this.city = city;
-//		newMessages = 0;
-		lastLogin = new Date();
-		profImg = "default.jpg";
-		
-	}
-	
+
 	public String getUserName() {
-		return userName;
+		return m_userName;
 	}
-	
+
 	public String getPassword() {
-		return password;
+		return m_password;
 	}
+
 	public void setPassword(String password) {
-		this.password = password;
+		this.m_password = password;
 	}
-	
+
 	public String getFirstName() {
-		return firstName;
+		return m_firstName;
 	}
+
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.m_firstName = firstName;
 	}
-	
+
 	public String getLastName() {
-		return lastName;
+		return m_lastName;
 	}
+
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.m_lastName = lastName;
 	}
-	
+
 	public String getTelephone() {
-		return telephone;
+		return m_telephone;
 	}
+
 	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+		this.m_telephone = telephone;
 	}
-	
+
 	public Date getBirthday() {
-		return birthday;
+		return m_birthday;
 	}
+
 	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+		this.m_birthday = birthday;
 	}
-	
+
 	public String getCity() {
-		return city;
+		return m_city;
 	}
+
 	public void setCity(String city) {
-		this.city = city;
+		this.m_city = city;
 	}
-	
-//	public int getNewMessages() {
-//		return newMessages;
-//	}
-//	public void setNewMessages(int newMessages) {
-//		this.newMessages = newMessages;
-//	}
-	
+
 	public Date getLastLogin() {
-		return lastLogin;
+		return m_lastLogin;
 	}
+
 	public void setLastLogin(Date lastLogin) {
-		this.lastLogin = lastLogin;
+		this.m_lastLogin = lastLogin;
 	}
-	
+
 	public String getProfImg() {
-		return profImg;
+		return m_profImg;
 	}
+
 	public void setProfImg(String profImg) {
-		this.profImg = profImg;
+		this.m_profImg = profImg;
 	}
-	
+
 	public String toString() {
-		
-		return "UserName: \t" + userName + "\r\n" +
-				"First Name: \t" + firstName + "\r\n" +
-				"Last Name: \t" + lastName + "\r\n" +
-				"Telephone: \t" + telephone + "\r\n" +
-				"Birthday: \t" + new SimpleDateFormat("dd/MM/yyyy" )
-					.format(birthday ) + "\r\n" +
-				"City: \t" + city + "\r\n" +
-				"Last Login: \t" + new SimpleDateFormat("dd/MM/yyyy" )
-					.format(lastLogin) + "\r\n";
+
+		return "UserName: \t" + m_userName + "\r\n" + "First Name: \t" +
+		        m_firstName + "\r\n" + "Last Name: \t" + m_lastName
+				+ "\r\n" + "Telephone: \t" + m_telephone + "\r\n" + 
+		        "Birthday: \t"+ new SimpleDateFormat("dd/MM/yyyy").format(
+		        m_birthday) + "\r\n" + "City: \t" + m_city + "\r\n"
+				+ "Last Login: \t" + new SimpleDateFormat("dd/MM/yyyy").format(
+						m_lastLogin) + "\r\n";
 	}
-	
-	private String userName;
-	private String password;
-	private String firstName;
-	private String lastName;
-	private String telephone;
-	private Date birthday;
-	private String city;
-//	private int newMessages;
-	private Date lastLogin;
-	private String profImg;
-	
+
+	private String m_userName;
+	private String m_password;
+	private String m_firstName;
+	private String m_lastName;
+	private String m_telephone;
+	private Date m_birthday;
+	private String m_city;
+	private Date m_lastLogin;
+	private String m_profImg;
+
 }

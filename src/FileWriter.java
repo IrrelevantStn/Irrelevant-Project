@@ -39,7 +39,7 @@ public class FileWriter {
 		out.close();
 
 	}
-
+	/* TODO
 	public Boolean writeProfile(Profile p) {
 
 		PrintWriter out = openFile(profFilePath);
@@ -100,8 +100,8 @@ public class FileWriter {
 		closeFile(out);
 		return true;
 
-	}
-
+	} */
+	/* TODO
 	public Boolean writeProfiles(ArrayList<Profile> profiles) {
 
 		for (Profile p : profiles) {
@@ -136,9 +136,10 @@ public class FileWriter {
 
 		closeFile(out);
 		return true;
-	}
+	} */
 
-	public Boolean writeConversation(String destination, String source, Date timeStamp, String textDesc, String data) {
+	public Boolean writeConversation(String destination, String source, Date
+			timeStamp, String textDesc, String data) {
 
 		PrintWriter out = openFile(convFilePath);
 		
@@ -170,7 +171,7 @@ public class FileWriter {
 		closeFile(out);
 		return true;
 	}
-
+	/* TODO
 	public Boolean writeDrawing(DrawingPalette drawing) {
 		PrintWriter out = openFile(drawFilePath);
 		
@@ -189,6 +190,6 @@ public class FileWriter {
 
 		closeFile(out);
 		return true;
-	}
+	}*/
 
 }

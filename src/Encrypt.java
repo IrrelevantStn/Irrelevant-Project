@@ -8,7 +8,7 @@ public class Encrypt
         return hashingFunction(objectToHash.toString());
     }
 
-    public String hashingFunction(String stringToHash){
+    private String hashingFunction(String stringToHash){
         String generatedHash = null;
         try {
             // Create MessageDigest instance for MD5

@@ -14,13 +14,13 @@ public class ContactList {
                     "system.");
 		} else {
 			m_contactList.add(n.getElement());
-			System.out.println("Friend: " + friend +" successfully added");
+			//System.out.println("Friend: " + friend +" successfully added");
 		}
 	}
 	
 	public void removeContact(Profile friend){
 		m_contactList.remove(friend);
-		System.out.println("Friend: " + friend + " has been removed");
+		//System.out.println("Friend: " + friend + " has been removed");
 	}
 	
 	public Profile findContact(String name) throws UserDoesNotExistException{
@@ -31,7 +31,6 @@ public class ContactList {
 				break;
 			}
 		}
-		
 		if(friend == null){
 			throw new UserDoesNotExistException(name + " is not in your " +
                     "contact list");
@@ -39,21 +38,4 @@ public class ContactList {
 		return friend;
 		}
 	}
-	
-	public String toString(){
-		return("ContactList test works");
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

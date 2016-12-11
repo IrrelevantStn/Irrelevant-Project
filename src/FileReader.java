@@ -137,7 +137,7 @@ public class FileReader {
 		return contacts;
 	}
 
-	public Conversations readConversations() {
+	public Conversations readConversations() throws NullPointerException {
 
 		Scanner m_in = openFile(convFilePath);
 		Conversations conversation = null;
@@ -181,8 +181,12 @@ public class FileReader {
 				
 				
 			}
-			
-			conversation.addNewMessage(msg);
+			try {
+                conversation.addNewMessage(msg);
+            }
+            catch (java.lang.NullPointerException e){
+                System.out.println("Message was unrecognised and Null");
+            }
 			
 			
 		}

@@ -27,6 +27,13 @@ public class ChooseContacts extends JFrame {
 
 		addContactsToScreen();
 
+		m_title = new JLabel();
+		m_title.setText("Click on the contacts you want to add");
+		m_title.setFont(new Font("Serif", Font.PLAIN, 20));
+		this.add(BorderLayout.NORTH,m_title);
+		
+		
+		
 		m_savebtn = new JButton();
 		m_savebtn.setFont(new Font("Serif", Font.PLAIN, 20));
 		m_savebtn.setText("Save");
@@ -71,7 +78,7 @@ public class ChooseContacts extends JFrame {
 
 	private JButton m_savebtn;
 	private ContactList contacts;
-	private ArrayList<String> m_ChosenContacts;
+	private ArrayList<String> m_ChosenContacts = new ArrayList<String>();
 	private JLabel m_title;
 	private JPanel m_ContentPane;
 

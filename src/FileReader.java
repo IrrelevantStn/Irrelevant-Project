@@ -1,20 +1,27 @@
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Scanner;
 
 public class FileReader {
 
-	private final String profFilePath = "Profile.txt";
-	private final String contactsFilePath = "Contacts.txt";
-	private final String convFilePath = "Conversations.txt";
-	private final String drawFilePath = "Drawings.txt";
-
-
+	private final String profFilePath = "src\\common\\Profile.txt";
+	private final String contactsFilePath = "src\\common\\Contacts.txt";
+	private final String convFilePath = "src\\common\\Conversations.txt";
+	private final String drawFilePath = "src\\common\\Drawings.txt";
+	
+	
 
 	public Scanner openFile(String filename) {
 
 		File inputFile = new File(filename);
-		Scanner in;
+		Scanner in = null;
 
 		try {
 
@@ -39,43 +46,55 @@ public class FileReader {
 	public ArrayList<Profile> readProfiles() {
 
 		Scanner m_in = openFile(profFilePath);
+		if (null == m_in ) {
+			return null;
+		}
 		
-		ArrayList<Profile> profileList = new ArrayList<Profile>();
+		ArrayList<Profile > profileList = new ArrayList<Profile>();
 		
-		while (m_in.hasNextLine()) {
+		while (m_in.hasNextLine() ) {
 			
 			String user = m_in.nextLine();
 			String[] userArray = user.split(",");
-			
-			int userid = Integer.parseInt(userArray[0]);
-			String firstName = userArray[1];
-			String surname = userArray[2];
-			String username = userArray[3];
-			String password = userArray[4];
-			int birthDay = Integer.parseInt(userArray[5]);
-			int birthMonth = Integer.parseInt(userArray[6]);
-			int birthYear = Integer.parseInt(userArray[7]);
-			Calendar cal = Calendar.getInstance();
-			cal.set(birthYear, birthMonth, birthDay);
-			Date birthday = cal.getTime();
-			String city = userArray[8];
-			String number = userArray[9];
-			int numNewMsg = Integer.parseInt(userArray[10]);
-			int lastLoginDay = Integer.parseInt(userArray[11]);
-			int lastLoginMonth = Integer.parseInt(userArray[12]);
-			int lastLoginYear = Integer.parseInt(userArray[13]);
-			Calendar last = Calendar.getInstance();
-			last.set(lastLoginDay, lastLoginMonth, lastLoginYear);
-			Date lastLogin = last.getTime();
-			String profImg = userArray[14];
 
-            /*TODO
-			Profile temp = new Profile(username,firstName,surname,number,
-                   birthday,city, numNewMsg,lastLogin,profImg,userid,
-                    password);
-			profileList.add(temp);
-			*/
+			String userName = userArray[0];
+			String password = userArray[1];
+			String firstName = userArray[2];
+			String lastName = userArray[3];
+			String telephone = userArray[4];
 			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy" );
+			Date birthday = null;
+			try {
+				birthday = sdf.parse(userArray[5] );
+			} catch (ParseException e ) {
+				// e.printStackTrace();
+				birthday = Calendar.getInstance().getTime();
+			}
+
+			String city = userArray[6];
+//			int newMessages = Integer.parseInt(userArray[7] );
+			
+			Date lastLogin = null;
+			try {
+				lastLogin = sdf.parse(userArray[7] );
+			} catch (ParseException e ) {
+				// e.printStackTrace();
+				lastLogin = Calendar.getInstance().getTime();
+			}
+			
+			String profImg = userArray[8];
+			
+			Profile temp = new Profile(
+					userName, password, 
+					firstName, lastName, 
+					telephone, birthday, city,lastLogin,profImg 
+			);
+			
+//			temp.setLastLogin(lastLogin);
+//			temp.setProfImg(profImg);
+
+			profileList.add(temp);
 		}
 		
 		closeFile(m_in);
@@ -83,24 +102,29 @@ public class FileReader {
 
 	}
 
-	public String readPassword(String username) {
-        //System.out.println("in readPassword");
-        //return "E";
+	public Boolean readLogin(String username, String password) {
 
 		Scanner m_in = openFile(profFilePath);
 		
-		while (m_in.hasNextLine()) {
+		while (m_in.hasNextLine() == true) {
 
 			String record = m_in.nextLine();
 			String[] recArray = record.split(",");
 
-			if (recArray[0].equals(username)) {
-				closeFile(m_in);
-				return recArray[1];
+			if (recArray[0].equalsIgnoreCase(username)) {
+				if (recArray[1].equals(password)) {
+					closeFile(m_in);
+					return true;
+
+				} else
+					closeFile(m_in);
+					return false;
 			}
+
 		}
 		closeFile(m_in);
-		return null;
+		return false;
+
 	}
 
 	public Graph readUsers(ArrayList<Profile> profiles) {
@@ -119,17 +143,19 @@ public class FileReader {
 		Scanner m_in = openFile(contactsFilePath);
 		ContactList contacts = new ContactList();
 		
-		while(m_in.hasNextLine()) {
+		while(m_in.hasNextLine() == true) {
 			
 			String line = m_in.nextLine();
 			String[] lineArray = line.split(",");
 			Boolean isRequest;
-
-			isRequest = Objects.equals(lineArray[2], "true");
-
+			
+			if (lineArray[2] == "true") {
+				isRequest = true;
+			} else isRequest = false;
+			
+			
 			if (username.equals(lineArray[0])) {
-                //TODO
-				//contacts.addContact(lineArray[1],isRequest);
+				contacts.addContact(lineArray[1]);
 			}
 			
 		}
@@ -137,13 +163,13 @@ public class FileReader {
 		return contacts;
 	}
 
-	public Conversations readConversations() throws NullPointerException {
-
+	public Conversations readConversations() {
+		
 		Scanner m_in = openFile(convFilePath);
-		Conversations conversation = null;
+		Conversations conversation = new Conversations(new ArrayList<Message>());
 
 		
-		while (m_in.hasNextLine()) {
+		while (m_in.hasNextLine() == true) {
 			
 			String conv = m_in.nextLine();
 			String[] convArray = conv.split(",");
@@ -168,25 +194,18 @@ public class FileReader {
 						
 			switch (msgType) {
 				
-			case "url" :    msg = new UrlMessage(destination,source,
-                    timeStamp,textDesc,data);
+			case "url" :    msg = new UrlMessage(destination,source,timeStamp,textDesc,data);
 							break;
-			case "text"	:	msg = new TextMessage(destination,source,
-                    timeStamp,data);
+			case "text"	:	msg = new TextMessage(destination,source,timeStamp,data);
 							break;
-			case "file"	:	msg = new FileMessage(destination,source,
-                    timeStamp,textDesc,data);
+			case "file"	:	msg = new FileMessage(destination,source,timeStamp,textDesc,data);
 							break;
 			default		:	break;
 				
 				
 			}
-			try {
-                conversation.addNewMessage(msg);
-            }
-            catch (java.lang.NullPointerException e){
-                System.out.println("Message was unrecognised and Null");
-            }
+			
+			conversation.addNewMessage(msg);
 			
 			
 		}
@@ -198,7 +217,7 @@ public class FileReader {
 		ArrayList<String> usernames = new ArrayList<String>();
 		Scanner m_in = openFile(profFilePath);
 		
-		while (m_in.hasNextLine()) {
+		while(m_in.hasNextLine() == true) {
 			
 			String profiles = m_in.nextLine();
 			String[] profArray = profiles.split(",");
@@ -210,33 +229,37 @@ public class FileReader {
 		closeFile(m_in);
 		return usernames;
 	}
-	/* TODO
-	public ArrayList<DrawingPalette> readDrawings(Graph users) {
+
+	public ArrayList<String> readDrawings(Graph users,Profile p) {
 
 		Scanner m_in = openFile(drawFilePath);
-		ArrayList<DrawingPalette> drawingList = new ArrayList<DrawingPalette>();
-		DrawingPalette drawing = new DrawingPalette();
+		ArrayList<String> drawingList = new ArrayList<String>();
+		//DrawingPalette drawing = new DrawingPalette();
 		
-		while (m_in.hasNextLine()) {
+		while (m_in.hasNextLine() == true) {
 			
 			String line = m_in.nextLine();
 			String[] lineArray = line.split(",");
 			
 			String filePath = lineArray[0];
 			ArrayList<Profile> authors = new ArrayList<Profile>();
+			
+			Boolean isAuthor = false;
+			
 			for (int x = 1; x < lineArray.length; x++) {
-				Profile p = users.findProfile(lineArray[x]);
+				Profile prof = users.findNode(lineArray[x]).getElement();
+				if (prof == p) {
+					isAuthor = true;
+				}
 				authors.add(p);
 			}
 			
-			drawing.setFilePath(filePath);
-			drawing.setAuthors(authors);
-			drawingList.add(drawing);
+			drawingList.add(filePath);
 			
 		}
 		
 		closeFile(m_in);
 		return drawingList;
-	}*/
+	}
 
 }

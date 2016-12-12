@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
 
 public class FileWriter {
 
@@ -107,11 +106,7 @@ public class FileWriter {
 
 	public Boolean writeProfiles(ArrayList<Profile> profiles) {
 
-		for (Profile p : profiles) {
-
-			writeProfile(p);
-
-		}
+        profiles.forEach(this::writeProfile);
 
 		return true;
 

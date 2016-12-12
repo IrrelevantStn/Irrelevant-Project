@@ -1,5 +1,3 @@
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -13,26 +11,22 @@ public class Login {
 	
 	
 	public ArrayList<Profile> getProfiles() {
-		
-		ArrayList<Profile> profiles = fr.readProfiles();
-		return profiles;
+
+        return fr.readProfiles();
 		
 	}
 	
 	public Graph readUsers(ArrayList<Profile> profiles) {
-		
-		Graph graph = fr.readUsers(profiles);
-		return graph;
+
+        return fr.readUsers(profiles);
 	}
 	
 	public Conversations getConv() {
-		Conversations conv = fr.readConversations();
-		return conv;
+        return fr.readConversations();
 	}
 	
 	public ContactList getContacts(String username) {
-		ContactList contacts = fr.readContacts(username);
-		return contacts;
+        return fr.readContacts(username);
 		
 	}
 	

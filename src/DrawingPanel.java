@@ -2,16 +2,22 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-
+/**
+ * Class for the Drawing Panel of the Collaborative Drawing Environment
+ * @author ryanx
+ *
+ */
 
 public class DrawingPanel extends JPanel {
 	
@@ -31,10 +37,18 @@ public class DrawingPanel extends JPanel {
 	//////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////
 
+	/**
+	 * Gets the colour
+	 * @return
+	 */
 	public Color getColour() {
 		return colour;
 	}
 
+	/**
+	 * Sets the colour
+	 * @param colour
+	 */
 	public void setColour(String colour) {
 
 		switch (colour) {
@@ -64,26 +78,49 @@ public class DrawingPanel extends JPanel {
 
 	}
 
+	/**
+	 * Gets the filename
+	 * @return
+	 */
 	public String getFileName() {
 		return this.filepath;
 	}
 
+	/**
+	 * Sets the filename
+	 * @param path
+	 */
 	public void setFileName(String path) {
 		this.filepath = path;
 	}
 
+	/**
+	 * Gets the authors
+	 * @return
+	 */
 	public ArrayList<String> getAuthors() {
 		return this.authors;
 	}
 
+	/**
+	 * Sets the authors
+	 * @param profiles
+	 */
 	public void setAuthors(ArrayList<String> profiles) {
 		this.authors = profiles;
 	}
 
+	/**
+	 * Adds an author to the list
+	 * @param profile
+	 */
 	public void addAuthor(String profile) {
 		this.authors.add(profile);
 	}
 
+	/**
+	 * The constructor for the class
+	 */
 	public DrawingPanel() {
 
 			addAuthor(user.getUserName());
@@ -91,6 +128,9 @@ public class DrawingPanel extends JPanel {
 
 		}
 
+	/**
+	 * Method to repaint the JPanel called every time repaint();
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -106,6 +146,13 @@ public class DrawingPanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Method to draw a straight line to the panel
+	 * @param startX
+	 * @param startY
+	 * @param endX
+	 * @param endY
+	 */
 	public void drawLine(int startX, int startY, int endX, int endY) {
 
 		Graphics g = image.getGraphics();
@@ -121,6 +168,10 @@ public class DrawingPanel extends JPanel {
 
 	}
 
+	/**
+	 * Method to spray partices to the JPanel
+	 * @param p
+	 */
 	public void spray(Point p) {
 
 		Graphics g = image.getGraphics();
@@ -139,18 +190,33 @@ public class DrawingPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Gets the point count
+	 * @return
+	 */
 	public int getPointCount() {
 		return m_PointCount;
 	}
 
+	/**
+	 * Increments the point count
+	 */
 	public void incrementPointCount() {
 		m_PointCount++;
 	}
 
+	/**
+	 * Gets the list of all the points
+	 * @return
+	 */
 	public Point[] getPoints() {
 		return m_Points;
 	}
 
+	/**
+	 * Sets the points
+	 * @param point
+	 */
 	public void setPoint(Point point) {
 		/*
 		 * boolean test = false; if (test) { System.out.println(
@@ -160,11 +226,21 @@ public class DrawingPanel extends JPanel {
 		m_Points[getPointCount()] = point;
 	}
 
+	/**
+	 * Method loads a drawing
+	 * @param fileName
+	 * @throws IOException
+	 */
 	public void loadDrawing(String fileName) throws IOException {
 		image = ImageIO.read(new File(fileName));
 		repaint();
 	}
 
+	/**
+	 * Method saves a drawing
+	 * @param filename
+	 * @throws IOException
+	 */
 	public void saveDrawing(String filename) throws IOException {
 
 		BufferedImage buffer = new BufferedImage(this.getSize().width, this.getSize().height,

@@ -1,24 +1,51 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import java.awt.EventQueue;
+
+import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
 
+/**
+ * Class for the GUI of the Collaborative Drawing Environment
+ * @author ryanx
+ *
+ */
 public class DrawingView extends JFrame {
 	//////////////////////////////////////////////////////
 	// Get and sets for the text field
 	//////////////////////////////////////////////////////
 
+	/**
+	 * Gets the file field
+	 * @return file field JTextField
+	 */
 	public JTextField getFileField() {
 		return m_filename;
 	}
 
+	/**
+	 * Sets the file field
+	 * @param field
+	 * @return
+	 */
 	public Boolean setFileField(JTextField field) {
 		m_filename = field;
 		return true;
@@ -28,64 +55,127 @@ public class DrawingView extends JFrame {
 	// Get and sets for the labels
 	//////////////////////////////////////////////////////
 
+	/**
+	 * Gets the File Name Label
+	 * @return JLabel file name
+	 */
 	public JLabel getFileNameLbl() {
 		return m_filenameLbl;
 	}
 
+	/**
+	 * Sets the file name label
+	 * @param lbl
+	 * @return
+	 */
 	public Boolean setFileNameLbl(JLabel lbl) {
 		m_filenameLbl = lbl;
 		return true;
 	}
 
+	/**
+	 * Gets the title label
+	 * @return JLabel title
+	 */
 	public JLabel getTitleLbl() {
 		return m_titleLbl;
 	}
 
+	/**
+	 * Sets the title label
+	 * @param lbl
+	 * @return
+	 */
 	public Boolean setTitleLbl(JLabel lbl) {
 		m_titleLbl = lbl;
 		return true;
 	}
 
+	/**
+	 * Gets the load label
+	 * @return JLabel load label
+	 */
 	public JLabel getLoadLbl() {
 		return m_loadLbl;
 	}
 
+	/**
+	 * Gets the line label
+	 * @return JLabel line
+	 */
 	public JLabel getLineLbl() {
 		return m_lineLbl;
 	}
 
+	/**
+	 * Gets the particle label
+	 * @return JLabel particle
+	 */
 	public JLabel getParticleLbl() {
 		return m_particleLbl;
 	}
 
+	/**
+	 * Gets the colour label
+	 * @return JLabel colour
+	 */
 	public JLabel getColorLbl() {
 		return m_colorLbl;
 	}
 
+	/**
+	 * Gets the save label
+	 * @return JLabel save
+	 */
 	public JLabel getSaveLbl() {
 		return m_saveLbl;
 	}
 
+	/**
+	 * Sets the load label
+	 * @param lbl
+	 * @return
+	 */
 	public Boolean setLoadLbl(JLabel lbl) {
 		m_loadLbl = lbl;
 		return true;
 	}
 
+	/**
+	 * Sets the line label
+	 * @param lbl
+	 * @return
+	 */
 	public Boolean setLineLbl(JLabel lbl) {
 		m_lineLbl = lbl;
 		return true;
 	}
 
+	/**
+	 * Sets the particle label
+	 * @param lbl
+	 * @return
+	 */
 	public Boolean setParticleLbl(JLabel lbl) {
 		m_particleLbl = lbl;
 		return true;
 	}
 
+	/**
+	 * Sets the colour label
+	 * @param lbl
+	 * @return
+	 */
 	public Boolean setColorLbl(JLabel lbl) {
 		m_colorLbl = lbl;
 		return true;
 	}
 
+	/**
+	 * Sets the save label
+	 * @param lbl
+	 * @return
+	 */
 	public Boolean setSaveLbl(JLabel lbl) {
 		m_saveLbl = lbl;
 		return true;
@@ -95,37 +185,73 @@ public class DrawingView extends JFrame {
 	// Get and sets for the buttons
 	//////////////////////////////////////////////////////////////////////
 
+	/**
+	 * Gets the load button
+	 * @return JButton load
+	 */
 	public JButton getLoadBtn() {
 		return m_loadBtn;
 	}
 
+	/**
+	 * Gets the line button
+	 * @return JButton line
+	 */
 	public JButton getLineBtn() {
 		return m_lineBtn;
 	}
 
+	/**
+	 * Gets the particle button
+	 * @return JButton particle
+	 */
 	public JButton getParticleBtn() {
 		return m_particleBtn;
 	}
 
+	/**
+	 * Gets the save button
+	 * @return JButton save
+	 */
 	public JButton getSaveBtn() {
 		return m_saveBtn;
 	}
 
+	/**
+	 * Sets the load button
+	 * @param btn
+	 * @return
+	 */
 	public Boolean setLoadBtn(JButton btn) {
 		m_loadBtn = btn;
 		return true;
 	}
 
+	/**
+	 * Sets the line button
+	 * @param btn
+	 * @return
+	 */
 	public Boolean setLineBtn(JButton btn) {
 		m_lineBtn = btn;
 		return true;
 	}
 
+	/**
+	 * Sets the particle button
+	 * @param btn
+	 * @return
+	 */
 	public Boolean setParticleBtn(JButton btn) {
 		m_particleBtn = btn;
 		return true;
 	}
 
+	/**
+	 * Sets the save button
+	 * @param btn
+	 * @return
+	 */
 	public Boolean setSaveBtn(JButton btn) {
 		m_saveBtn = btn;
 		return true;
@@ -135,27 +261,53 @@ public class DrawingView extends JFrame {
 	// Set and Get all the Combo boxes
 	////////////////////////////////////////////////////////////////////
 
+	/**
+	 * Gets the colour combo box
+	 * @return JComboBox choose colour
+	 */
 	public JComboBox<String> getChooseColour() {
 		return m_chooseColour;
 	}
 
+	/**
+	 * Sets the colour combo box
+	 * @param box
+	 */
 	public void setChooseColour(JComboBox<String> box) {
 		m_chooseColour = box;
 	}
 
+	/**
+	 * Gets the drawings combo box
+	 * @return JComboBox Choose Drawings
+	 */
 	public JComboBox<String> getChooseDrawings() {
 		return m_chooseDrawings;
 	}
 
+	/**
+	 * Gets the choose colour button
+	 * @return JButton Choose Colour
+	 */
 	public JButton getChooseColorBtn() {
 		return m_chooseColor;
 	}
 
+	/**
+	 * Sets the Choose Drawings Combo Box
+	 * @param combo
+	 * @return
+	 */
 	public Boolean setChooseDrawings(JComboBox<String> combo) {
 		m_chooseDrawings = combo;
 		return true;
 	}
 
+	/**
+	 * Sets the Choose Colour button
+	 * @param btn
+	 * @return
+	 */
 	public Boolean setChooseColorBtn(JButton btn) {
 		m_chooseColor = btn;
 		return true;
@@ -165,40 +317,77 @@ public class DrawingView extends JFrame {
 	// Get and set for the int values
 	//////////////////////////////////////////////////////////////////////////
 
+	/**
+	 * Gets the startX value
+	 * @return int x
+	 */
 	public int getStartX() {
 		return startX;
 	}
 
+	/**
+	 * Gets the startY value
+	 * @return int y
+	 */
 	public int getStartY() {
 		return startY;
 	}
 
+	/**
+	 * Gets the EndX value
+	 * @return int x
+	 */
 	public int getEndX() {
 		return endX;
 	}
 
+	/**
+	 * Gets the endY value
+	 * @return int y
+	 */
 	public int getEndY() {
 		return endY;
 	}
 
+	/**
+	 * Sets the startX value
+	 * @param x
+	 */
 	public void setStartX(int x) {
 		startX = x;
 	}
 
+	/**
+	 * Sets the StartY value
+	 * @param y
+	 */
 	public void setStartY(int y) {
 		startY = y;
 	}
 
+	/**
+	 * Sets the endX value
+	 * @param x
+	 */
 	public void setEndX(int x) {
 		endX = x;
 	}
 
+	/**
+	 * Sets the endY value
+	 * @param y
+	 */
 	public void setEndY(int y) {
 		endY = y;
 	}
 
 	/////////////////////////////////////////////////////////
 
+	/**
+	 * Loads the drawings into the arraylist of drawings
+	 * @param users
+	 * @param user
+	 */
 	public void loadDrawings(Graph users, Profile user) {
 
 		FileReader read = new FileReader();
@@ -317,6 +506,11 @@ public class DrawingView extends JFrame {
 		// repaint();
 	}
 
+	/**
+	 * Method to get the gui to allow the user to draw Straight Lines
+	 * @param x
+	 * @param y
+	 */
 	public void drawLine(int x, int y) {
 
 		JLabel particle = new JLabel();
@@ -349,12 +543,22 @@ public class DrawingView extends JFrame {
 		}
 	}
 
+	/**
+	 * Method for gui to allow user to draw Particles
+	 * @param x
+	 * @param y
+	 */
 	public void drawParticles(int x, int y) {
 		m_contentPane.validate();
 		m_contentPane.repaint();
 		repaint();
 	}
 
+	/**
+	 * Class to handle button click actions
+	 * @author ryanx
+	 *
+	 */
 	private class BtnHandler implements MouseListener, MouseMotionListener {
 
 		private JFrame frame;

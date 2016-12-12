@@ -138,7 +138,7 @@ public class FileWriter {
 		return true;
 	}
 
-	public Boolean writeConversation(String destination, String source, Date
+	public Boolean writeConversation(String fileType,String destination, String source, Date
 			timeStamp, String textDesc, String data) {
 
 		PrintWriter out = openFile(convFilePath);

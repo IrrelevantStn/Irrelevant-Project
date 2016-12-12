@@ -1,5 +1,4 @@
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.security.NoSuchAlgorithmException;
@@ -10,6 +9,7 @@ public class Profile {
 	public Profile(String userName, String password, String firstName, String lastName, String telephone, Date birthday,String city, Date lastLogin, String profImg) throws
 			NoSuchAlgorithmException, NoSuchProviderException {
 
+        this.m_profileId = m_counter++;
 		this.m_userName = userName;
 		this.m_password = password;
 		this.m_salt = Encrypt.getSalt();
@@ -22,6 +22,9 @@ public class Profile {
 		this.m_profImg = profImg;
 
 	}
+    public int getProfileID() {
+        return m_profileId;
+    }
 
 	public String getUserName() {
 		return m_userName;
@@ -120,5 +123,7 @@ public class Profile {
 	private String m_city;
 	private Date m_lastLogin;
 	private String m_profImg;
+    public final int m_profileId;
+    private static int m_counter = 0;
 
 }

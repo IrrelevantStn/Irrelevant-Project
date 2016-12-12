@@ -44,10 +44,10 @@ public class FileWriter {
 
 		PrintWriter out = openFile(profFilePath);
 		
-		String userid = Integer.toString(p.getProfId());
+		String userid = Integer.toString(p.getProfileID());
 		String firstName = p.getFirstName();
-		String surname = p.getSurname();
-		String username = p.getUsername();
+		String surname = p.getLastName();
+		String username = p.getUserName();
 		String password = p.getPassword();
 		Calendar temp = Calendar.getInstance();
 		temp.setTime(p.getBirthday());
@@ -56,8 +56,8 @@ public class FileWriter {
 		String birthYear = Integer.toString(temp.YEAR);
 
 		String city = p.getCity();
-		String number = p.getNumber();
-		String numNewMsg = Integer.toString(p.getNewMessages());
+		String number = p.getTelephone();
+		//String numNewMsg = Integer.toString(p.get());
 		temp.setTime(p.getBirthday());
 		String lastLoginDay = Integer.toString(temp.DAY_OF_YEAR);
 		String lastLoginMonth = Integer.toString(temp.MONTH);
@@ -83,8 +83,8 @@ public class FileWriter {
 		add += city;
 		add += ",";
 		add += number;
-		add += ",";
-		add += numNewMsg;
+		//add += ",";
+		//add += numNewMsg;
 		add += ",";
 		add += lastLoginDay;
 		add += ",";
@@ -118,7 +118,7 @@ public class FileWriter {
 
 		PrintWriter out = openFile(contactsFilePath);
 		
-		for (Profile p : contacts.getContacts()) {
+		for (Profile p : ContactList.getContactList()) {
 
 			String isRequest;
 			if (contacts.isRequest() == true) {

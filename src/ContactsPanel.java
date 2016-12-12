@@ -13,6 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+/**
+ * @author Aisha Ekangaki
+ * ContactsPanel.java is a partial implementation of the ContactsView interface to handle ContactList
+ *
+ */
+
 public class ContactsPanel extends JPanel{
 	
 	public JButton getAcceptFriendRequest(){
@@ -85,7 +91,7 @@ public class ContactsPanel extends JPanel{
 		for(Profile p : contacts){
 			String s = p.getFirstName() + " " + p.getLastName();
 			JButton button = new JButton(s);
-			button.setBounds(0, inc, 500, 40);
+			button.setBounds(0, inc, 400, 40);
 			m_Contacts.add(button);
 			m_ContactListContainer.add(m_Contacts.get(m_Contacts.size() - 1));
 			
@@ -180,7 +186,7 @@ public class ContactsPanel extends JPanel{
 		this.m_SearchContactList.setBounds(300, 0, 100, 20);
 	}
 		
-	public ContactsPanel(ContactList userList) {
+	public ContactsPanel() {
 		m_ContactListPanel = this;
 		m_ContactListPanel.setBackground(Color.WHITE);
 		m_ContactListPanel.setLayout(null);

@@ -13,8 +13,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 
+import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -128,7 +128,7 @@ public class MessagesView extends JFrame {
 			}
 			if (e.getSource() == m_SendBtn) {
 				// Send the message
-				if (!m_MessageField.getText().equals("")) {
+				if (m_MessageField.getText().equals("") == false) {
 					if (receipients.size() > 1) {
 						sendMultiReceipient(m_MessageField.getText());
 					} else {
@@ -302,16 +302,16 @@ public class MessagesView extends JFrame {
 	public void getMessage(String selectedItem) {
 
 		for (Message m : conv.getMessages()) {
-			if (Objects.equals(m.getSource(), selectedItem)) {
+			if (m.getSource() == selectedItem) {
 
-				if ((m instanceof TextMessage)) {
+				if ((m instanceof TextMessage) == true) {
 					TextMessage msg = (TextMessage) m;
 					JLabel lbl = new JLabel();
 					lbl.setText(msg.getContentText());
 					lbl.setForeground(Color.BLACK);
 					m_SentPanel.add(lbl);
 
-				} else if ((m instanceof UrlMessage)) {
+				} else if ((m instanceof UrlMessage) == true) {
 					UrlMessage msg = (UrlMessage) m;
 					JLabel lbl = new JLabel();
 					
@@ -326,22 +326,22 @@ public class MessagesView extends JFrame {
 				} else {
 					FileMessage file = (FileMessage) m;
 					JLabel lbl = new JLabel();
-					lbl.setText(file.getContentText());
+					lbl.setText(file.getFilePath());
 					lbl.setForeground(Color.BLACK);
 					m_SentPanel.add(lbl);
 
 				}
 
-			} else if (Objects.equals(m.getDestination(), selectedItem)) {
+			} else if (m.getDestination() == selectedItem) {
 
-				if ((m instanceof TextMessage)) {
+				if ((m instanceof TextMessage) == true) {
 					TextMessage msg = (TextMessage) m;
 					JLabel lbl = new JLabel();
 					lbl.setText(msg.getContentText());
 					lbl.setForeground(Color.BLACK);
 					m_ReceivedPanel.add(lbl, BorderLayout.WEST);
 
-				} else if ((m instanceof UrlMessage)) {
+				} else if ((m instanceof UrlMessage) == true) {
 					UrlMessage msg = (UrlMessage) m;
 					JLabel lbl = new JLabel();
 					lbl.setText("<html> Website : <a href=\"\">" + msg.getWebAddress() + "</a></html>");
@@ -351,7 +351,7 @@ public class MessagesView extends JFrame {
 				} else {
 					FileMessage file = (FileMessage) m;
 					JLabel lbl = new JLabel();
-					lbl.setText(file.getContentText());
+					lbl.setText(file.getFilePath());
 					lbl.setForeground(Color.BLACK);
 					m_ReceivedPanel.add(lbl, BorderLayout.WEST);
 

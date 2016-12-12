@@ -25,6 +25,24 @@ public class Node {
 		System.out.println("Test works");
 	}
 	
+	public Edge getEdge(String friend) throws IllegalArgumentException{
+		Edge friendEdge = null;
+		for(Edge e : m_edgeList){
+			if(e.getFriend().getElement().getUserName().equals(friend)){
+				friendEdge = e;
+			}
+		}
+		if(friendEdge == null){
+			throw new IllegalArgumentException("No edge exists between " + m_element.getUserName() + " and " + friend);
+		} else {
+			return friendEdge;
+		}
+	}
+	
+	public void removeEdge(Edge e){
+		m_edgeList.remove(e);
+	}
+	
 	public String toString(){
 		return("Profile: " + m_element);
 	}

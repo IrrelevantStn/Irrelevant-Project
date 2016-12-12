@@ -4,14 +4,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Scanner;
 
 public class FileReader {
 
-	private final String profFilePath = "src\\common\\Profile.txt";
-	private final String contactsFilePath = "src\\common\\Contacts.txt";
-	private final String convFilePath = "src\\common\\Conversations.txt";
-	private final String drawFilePath = "src\\common\\Drawings.txt";
+	private final String profFilePath = "src\\Profile.txt";
+	private final String contactsFilePath = "src\\Contacts.txt";
+	private final String convFilePath = "src\\Conversations.txt";
+	private final String drawFilePath = "src\\Drawings.txt";
 	
 	
 
@@ -99,7 +102,7 @@ public class FileReader {
 
 	}
 
-	public String readPassword(String username) {
+	public Boolean readLogin(String username, String password) {
 
 		Scanner m_in = openFile(profFilePath);
 		
@@ -108,13 +111,20 @@ public class FileReader {
 			String record = m_in.nextLine();
 			String[] recArray = record.split(",");
 
-			if (recArray[0].equals(username)) {
+			if (recArray[0].equalsIgnoreCase(username)) {
+				if (recArray[1].equals(password)) {
 					closeFile(m_in);
-					return recArray[1];
+					return true;
+
+				} else
+					closeFile(m_in);
+					return false;
 			}
+
 		}
 		closeFile(m_in);
-		return null;
+		return false;
+
 	}
 
 	public Graph readUsers(ArrayList<Profile> profiles) {
@@ -139,7 +149,7 @@ public class FileReader {
 			String[] lineArray = line.split(",");
 			Boolean isRequest;
 			
-			if (Objects.equals(lineArray[2], "true")) {
+			if (lineArray[2] == "true") {
 				isRequest = true;
 			} else isRequest = false;
 			

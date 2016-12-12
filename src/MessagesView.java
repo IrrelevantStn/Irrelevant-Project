@@ -129,7 +129,7 @@ public class MessagesView extends JFrame {
 			}
 			if (e.getSource() == m_SendBtn) {
 				// Send the message
-				if (m_MessageField.getText().equals("") == false) {
+				if (!m_MessageField.getText().equals("")) {
 					if (receipients.size() > 1) {
 						sendMultiReceipient(m_MessageField.getText());
 					} else {
@@ -305,14 +305,14 @@ public class MessagesView extends JFrame {
 		for (Message m : conv.getMessages()) {
 			if (Objects.equals(m.getSource(), selectedItem)) {
 
-				if ((m instanceof TextMessage) == true) {
+				if ((m instanceof TextMessage)) {
 					TextMessage msg = (TextMessage) m;
 					JLabel lbl = new JLabel();
 					lbl.setText(msg.getContentText());
 					lbl.setForeground(Color.BLACK);
 					m_SentPanel.add(lbl);
 
-				} else if ((m instanceof UrlMessage) == true) {
+				} else if ((m instanceof UrlMessage)) {
 					UrlMessage msg = (UrlMessage) m;
 					JLabel lbl = new JLabel();
 					
@@ -335,14 +335,14 @@ public class MessagesView extends JFrame {
 
 			} else if (Objects.equals(m.getDestination(), selectedItem)) {
 
-				if ((m instanceof TextMessage) == true) {
+				if ((m instanceof TextMessage)) {
 					TextMessage msg = (TextMessage) m;
 					JLabel lbl = new JLabel();
 					lbl.setText(msg.getContentText());
 					lbl.setForeground(Color.BLACK);
 					m_ReceivedPanel.add(lbl, BorderLayout.WEST);
 
-				} else if ((m instanceof UrlMessage) == true) {
+				} else if ((m instanceof UrlMessage)) {
 					UrlMessage msg = (UrlMessage) m;
 					JLabel lbl = new JLabel();
 					lbl.setText("<html> Website : <a href=\"\">" + msg.getWebAddress() + "</a></html>");

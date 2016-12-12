@@ -10,19 +10,15 @@ public class Encrypt
         String generatedHash = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            System.out.println("md created: " + md.toString());
             //Hash and get Hashed Bytes
             byte[] hashBytes = md.digest(passwordToHash.getBytes());
             md.update(salt);
-            System.out.println("md created and salted: " + md.toString());
-            System.out.println("hashBytes: " + hashBytes.toString());
             generatedHash = new BigInteger(1, md.digest()).toString(16);
         }
         catch (NoSuchAlgorithmException e)
         {
             e.printStackTrace();
         }
-        System.out.println("generatedHash: " + generatedHash);
         return generatedHash;
     }
 
@@ -37,7 +33,6 @@ public class Encrypt
         byte[] salt = new byte[16];
         //Get a random salt
         sr.nextBytes(salt);
-        System.out.println("Salt: "+salt);
         //return salt
         return salt;
     }

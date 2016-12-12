@@ -175,7 +175,7 @@ public class FileWriter {
 		return true;
 	}
 
-	public Boolean writeDrawing(DrawingPalette drawing) {
+	public Boolean writeDrawing(DrawingPanel drawing) {
 		PrintWriter out = openFile(drawFilePath);
 		
 		String writeLine = "";

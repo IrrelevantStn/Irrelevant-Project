@@ -12,7 +12,8 @@ public class TextMessage extends Message{
     }
 
     protected void textFormatting(String contentText) {
-        this.m_contentText = contentText;
+        this.m_contentText = contentText.substring(0, Math.min(contentText
+                        .length(), 250));
     }
 
     private String m_contentText;

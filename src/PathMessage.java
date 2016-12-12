@@ -12,7 +12,8 @@ public abstract class PathMessage extends Message{
     }
 
     protected void textFormatting(String contentDescription) {
-        this.m_contentDescription = contentDescription;
+        this.m_contentDescription = contentDescription.substring(0, Math.min
+                (contentDescription.length(), 50));
     }
 
     private String m_contentDescription;

@@ -2,6 +2,8 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,7 +45,7 @@ public class FileReader {
 
 	}
 
-	public ArrayList<Profile> readProfiles() {
+	public ArrayList<Profile> readProfiles() throws NoSuchProviderException, NoSuchAlgorithmException{
 
 		Scanner m_in = openFile(profFilePath);
 		if (null == m_in ) {
@@ -57,36 +59,38 @@ public class FileReader {
 			String user = m_in.nextLine();
 			String[] userArray = user.split(",");
 
-			String userName = userArray[0];
-			String password = userArray[1];
-			String firstName = userArray[2];
-			String lastName = userArray[3];
-			String telephone = userArray[4];
+			String firstName = userArray[0];
+			String lastName = userArray[1];
+			String userName = userArray[2];
+			byte[] salt = userArray[3].getBytes();
+			String password = userArray[4];
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy" );
 			Date birthday = null;
 			try {
-				birthday = sdf.parse(userArray[5] );
+				birthday = sdf.parse(userArray[5] + userArray[6] +
+						userArray[7]);
 			} catch (ParseException e ) {
 				// e.printStackTrace();
 				birthday = Calendar.getInstance().getTime();
 			}
 
-			String city = userArray[6];
+			String city = userArray[8];
 //			int newMessages = Integer.parseInt(userArray[7] );
+			String telephone = userArray[9];
 			
 			Date lastLogin = null;
 			try {
-				lastLogin = sdf.parse(userArray[7] );
+				lastLogin = sdf.parse(userArray[10] + userArray[11] +
+						userArray[12] );
 			} catch (ParseException e ) {
 				// e.printStackTrace();
 				lastLogin = Calendar.getInstance().getTime();
 			}
 			
-			String profImg = userArray[8];
+			String profImg = userArray[13];
 			
-			Profile temp = new Profile(
-					userName, password, 
+			Profile temp = new Profile(	userName, password,
 					firstName, lastName, 
 					telephone, birthday, city,lastLogin,profImg 
 			);

@@ -49,6 +49,7 @@ public class FileWriter {
 		String surname = p.getLastName();
 		String username = p.getUserName();
 		String password = p.getPassword();
+        byte[] salt = p.getSalt();
 		Calendar temp = Calendar.getInstance();
 		temp.setTime(p.getBirthday());
 		String birthDay = Integer.toString(temp.DAY_OF_YEAR);
@@ -72,6 +73,8 @@ public class FileWriter {
 		add += ",";
 		add += username;
 		add += ",";
+        add += salt;
+        add += ",";
 		add += password;
 		add += ",";
 		add += birthDay;

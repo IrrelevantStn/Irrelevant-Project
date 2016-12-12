@@ -1,43 +1,44 @@
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
+import java.math.BigInteger;
 
 public class Encrypt
 {
-    public String hashPrep(Object objectToHash){
-        return hashingFunction(objectToHash.toString());
-    }
-
-    private String hashingFunction(String stringToHash){
+    public static String hashString(String passwordToHash, byte[] salt){
         String generatedHash = null;
         try {
-            // Create MessageDigest instance for MD5
             MessageDigest md = MessageDigest.getInstance("MD5");
-            //Add password bytes to digest
-            md.update(stringToHash.getBytes());
-            //Get the hash's bytes
-            byte[] bytes = md.digest();
-            //Conversion to Hex
-            StringBuilder sb = new StringBuilder();
-            for (byte aByte : bytes) {
-                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
-            }
-            //Get complete hashed password in hex format
-            generatedHash = sb.toString();
+            System.out.println("md created: " + md.toString());
+            //Hash and get Hashed Bytes
+            byte[] hashBytes = md.digest(passwordToHash.getBytes());
+            md.update(salt);
+            System.out.println("md created and salted: " + md.toString());
+            System.out.println("hashBytes: " + hashBytes.toString());
+            generatedHash = new BigInteger(1, md.digest()).toString(16);
         }
         catch (NoSuchAlgorithmException e)
         {
             e.printStackTrace();
         }
+        System.out.println("generatedHash: " + generatedHash);
         return generatedHash;
     }
-    private static byte[] getSalt() throws NoSuchAlgorithmException {
-        SecureRandom secure = SecureRandom.getInstance("SHA1PRNG");
+
+    public static String hashPrep(Object objectToHash) throws NoSuchAlgorithmException, NoSuchProviderException{
+        return hashString(objectToHash.toString(), getSalt());
+    }
+
+    public static byte[] getSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
+        //Always use a SecureRandom generator
+        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "SUN");
         //Create array for salt
         byte[] salt = new byte[16];
         //Get a random salt
-        secure.nextBytes(salt);
+        sr.nextBytes(salt);
+        System.out.println("Salt: "+salt);
+        //return salt
         return salt;
     }
 }
-

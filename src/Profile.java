@@ -2,15 +2,17 @@
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 
 public class Profile {
 
-	public Profile(String userName, String password, String firstName,
-			String lastName, String telephone, Date birthday,
-			String city, Date lastLogin, String profImg) {
+	public Profile(String userName, String password, String firstName, String lastName, String telephone, Date birthday,String city, Date lastLogin, String profImg) throws
+			NoSuchAlgorithmException, NoSuchProviderException {
 
 		this.m_userName = userName;
 		this.m_password = password;
+		this.m_salt = Encrypt.getSalt();
 		this.m_firstName = firstName;
 		this.m_lastName = lastName;
 		this.m_telephone = telephone;
@@ -31,6 +33,14 @@ public class Profile {
 
 	public void setPassword(String password) {
 		this.m_password = password;
+	}
+
+	public byte[] getSalt() {
+		return m_salt;
+	}
+
+	public void setSalt(byte[] salt) {
+		this.m_salt = salt;
 	}
 
 	public String getFirstName() {
@@ -102,6 +112,7 @@ public class Profile {
 
 	private String m_userName;
 	private String m_password;
+	private byte[] m_salt;
 	private String m_firstName;
 	private String m_lastName;
 	private String m_telephone;

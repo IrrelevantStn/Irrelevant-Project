@@ -3,7 +3,11 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+/**
+ * Class to deal with reading in from text files
+ * @author ryanx
+ *
+ */
 public class FileReader {
 
 	private final String profFilePath = "src\\Profile.txt";
@@ -13,6 +17,11 @@ public class FileReader {
 	
 	
 
+	/**
+	 * Opens a given file using the scanner object
+	 * @param filename
+	 * @return Scanner
+	 */
 	public Scanner openFile(String filename) {
 
 		File inputFile = new File(filename);
@@ -32,12 +41,20 @@ public class FileReader {
 
 	}
 
+	/**
+	 * Closes the scanner of the text file
+	 * @param in
+	 */
 	public void closeFile(Scanner in) {
 
 		in.close();
 
 	}
 
+	/**
+	 * Reads all the profiles of the system into an arraylist
+	 * @return ArrayList<Profile>
+	 */
 	public ArrayList<Profile> readProfiles() {
 
 		Scanner m_in = openFile(profFilePath);
@@ -98,6 +115,11 @@ public class FileReader {
 
 	}
 
+	/**
+	 * Returns the password given the username of the user
+	 * @param username
+	 * @return
+	 */
 	public String readPassword(String username) {
 
 		Scanner m_in = openFile(profFilePath);
@@ -117,6 +139,11 @@ public class FileReader {
 
 	}
 
+	/**
+	 * Reads the salt(encrypted) from the profile given the username
+	 * @param username
+	 * @return byte[]
+	 */
     public byte[] readSalt(String username) {
 
         Scanner m_in = openFile(profFilePath);
@@ -136,6 +163,11 @@ public class FileReader {
 
     }
 
+    /**
+     * Reads all the users into a Graph
+     * @param profiles
+     * @return
+     */
 	public Graph readUsers(ArrayList<Profile> profiles) {
 
 		Graph graph = new Graph();
@@ -148,6 +180,11 @@ public class FileReader {
 
 	}
 
+	/**
+	 * Reads all the users into a contact list givn the profile
+	 * @param prof
+	 * @return
+	 */
 	public ContactList readContacts(Profile prof) {
 		Scanner m_in = openFile(contactsFilePath);
 		ContactList contacts = new ContactList(prof);
@@ -177,6 +214,10 @@ public class FileReader {
 		return contacts;
 	}
 
+	/**
+	 * Reads the conversations between all users on the system
+	 * @return Conversations
+	 */
 	public Conversations readConversations() {
 		
 		Scanner m_in = openFile(convFilePath);
@@ -227,6 +268,10 @@ public class FileReader {
 		return conversation;
 	}
 	
+	/**
+	 * Gets all the usernames of users on the system
+	 * @return
+	 */
 	public ArrayList<String> getUsernames() {
 		ArrayList<String> usernames = new ArrayList<String>();
 		Scanner m_in = openFile(profFilePath);
@@ -244,6 +289,12 @@ public class FileReader {
 		return usernames;
 	}
 
+	/**
+	 * Reads all the drawings that an author can access given the authors profile
+	 * @param users
+	 * @param p
+	 * @return
+	 */
 	public ArrayList<String> readDrawings(Graph users,Profile p) {
 
 		Scanner m_in = openFile(drawFilePath);

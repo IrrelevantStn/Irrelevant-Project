@@ -61,7 +61,7 @@ public class ContactList {
 	/**
 	 * @return The node of the current user from the graph
 	 */
-	private Node getUser(){
+	public Node getUser(){
 		return m_User;
 	}
 	

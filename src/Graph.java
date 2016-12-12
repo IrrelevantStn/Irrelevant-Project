@@ -29,7 +29,8 @@ public class Graph {
 	public static Node findNode(String name) throws UserDoesNotExistException{
 		Node n = null;
 		for (Node user : m_nodes) { 
-		    if (user.getElement().getUserName().equals(name)) {
+			String s = user.getElement().getFirstName() + " " + user.getElement().getLastName();
+		    if (user.getElement().getUserName().equals(name) || s.equals(name)) {
 		        n = user;
 		        break;
 		    }

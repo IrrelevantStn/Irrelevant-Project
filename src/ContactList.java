@@ -13,7 +13,7 @@ public class ContactList {
 	private void setContactList(){
 		for(Edge e : m_User.getEdgeList()){
 			boolean isFriend = e.isBidirectional();
-			if(isFriend && !m_ContactList.contains(e)){
+			if(isFriend == true && !m_ContactList.contains(e)){
 				this.m_ContactList.add(e.getFriend().getElement());
 			}
 		}
@@ -22,9 +22,9 @@ public class ContactList {
 	private void setFriendRequests(){
 		for(Edge e : m_User.getEdgeList()){
 			boolean isFriend = e.isBidirectional();
-			if(!isFriend && !m_FriendRequests.contains(e)){
+			if(isFriend == false && !m_FriendRequests.contains(e)){
 				this.m_FriendRequests.add(e);
-			} else if(isFriend && m_FriendRequests.contains(e)){
+			} else if(isFriend == true && m_FriendRequests.contains(e)){
 				this.m_FriendRequests.remove(e);
 			}
 		}
@@ -38,7 +38,7 @@ public class ContactList {
 		return m_FriendRequests;
 	}
 	
-	public Node getUser(){
+	private Node getUser(){
 		return m_User;
 	}
 	
@@ -84,7 +84,8 @@ public class ContactList {
 	public Profile findContact(String name) throws UserDoesNotExistException{
 		Profile friend = null;
 		for(Profile p : m_ContactList){
-			if(p.getUserName().equals(name)){
+			String s = p.getFirstName() + " " + p.getLastName();
+			if(p.getUserName().equals(name) || s.equals(name)){
 				friend = p;
 				break;
 			}

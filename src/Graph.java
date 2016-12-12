@@ -1,12 +1,23 @@
 import java.util.ArrayList;
 
+/**
+ * @author Aisha Ekangaki
+ * Graph.java creates a graph for all the users in the system to be stored in
+ *
+ */
 public class Graph {
-	private static ArrayList<Node> m_nodes = new ArrayList<>();
 	
+	/**
+	 * @return an arraylist of all the users in the system
+	 */
 	public static ArrayList<Node> getAllUsers(){
 		return m_nodes;
 	}
 	
+	/**
+	 * Adds a profile to the graph
+	 * @param p profile to be added
+	 */
 	public static void addProfile(Profile p){
 		 Node n = new Node(p);
 		 m_nodes.add(n);
@@ -14,6 +25,11 @@ public class Graph {
 				 			" has been successfully added to the system.");
 	}
 	
+	/**
+	 * Deletes a profile from the graph
+	 * @param name username of profile to be deleted
+	 * @throws UserDoesNotExistException if the profile does not exist in the system
+	 */
 	public static void deleteProfile(String name) throws UserDoesNotExistException{
 		for (Node user : m_nodes) { 
 		    if (user.getElement().getUserName().equals(name)) {
@@ -26,6 +42,12 @@ public class Graph {
 		}
 	}
 	
+	/**
+	 * Finds a node in the graph
+	 * @param name username of the user to be found
+	 * @return the node of the user
+	 * @throws UserDoesNotExistException if the user is not in the system
+	 */
 	public static Node findNode(String name) throws UserDoesNotExistException{
 		Node n = null;
 		for (Node user : m_nodes) { 
@@ -40,23 +62,7 @@ public class Graph {
 		} else {
 			return n;
 		}		
-	}
+	}	
 	
-	public String toString(){
-		return("Graph test works");
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private static ArrayList<Node> m_nodes = new ArrayList<>();
 }

@@ -38,7 +38,7 @@ public class ContactList {
 		return m_FriendRequests;
 	}
 	
-	private Node getUser(){
+	public Node getUser(){
 		return m_User;
 	}
 	

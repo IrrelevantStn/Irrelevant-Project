@@ -32,13 +32,9 @@ public class Spray {
 		return true;
 	}
 	
-
-	
 	public Spray() {
 		m_colour = Color.BLACK;
-		
 	}
-
 
 	public Color getColor() {
 		return m_colour;
@@ -55,9 +51,7 @@ public class Spray {
 			 g.fillOval(getPoints()[i].x, getPoints()[i].y, WIDTH,
 					 HEIGHT);
 		 }
-		  
 		g.dispose();
-
 	}
 	
 	private Color m_colour;

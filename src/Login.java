@@ -1,3 +1,5 @@
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -6,14 +8,15 @@ public class Login {
 	
 	public boolean loginDetailsCorrect(String u, String p){
         //System.out.println("In loginDetails");
-        return Objects.equals(fr.readPassword(u), p);
+        Encrypt.hashString(p, fr.readSalt(u));
+        return Objects.equals(fr.readPassword(u), Encrypt.hashString(p, fr.readSalt(u)));
 	}
 	
 	
-	public ArrayList<Profile> getProfiles() {
+	public ArrayList<Profile> getProfiles() throws NoSuchAlgorithmException,
+			NoSuchProviderException {
 		
 		ArrayList<Profile> profiles = fr.readProfiles();
-		
 		return profiles;
 		
 	}

@@ -116,14 +116,32 @@ public class FileReader {
 
 			if (recArray[0].equalsIgnoreCase(username)) {
 				closeFile(m_in);
-				return recArray[1] + recArray[2];
+				return recArray[1];
 			}
-
 		}
 		closeFile(m_in);
 		return null;
 
 	}
+
+    public byte[] readSalt(String username) {
+
+        Scanner m_in = openFile(profFilePath);
+
+        while (m_in.hasNextLine() == true) {
+
+            String record = m_in.nextLine();
+            String[] recArray = record.split(",");
+
+            if (recArray[0].equalsIgnoreCase(username)) {
+                closeFile(m_in);
+                return recArray[2].getBytes();
+            }
+        }
+        closeFile(m_in);
+        return null;
+
+    }
 
 	public Graph readUsers(ArrayList<Profile> profiles) {
 

@@ -102,7 +102,8 @@ public class FileReader {
 
 	}
 
-	public Boolean readLogin(String username, String password) {
+	
+	public String readPassword(String username) {
 
 		Scanner m_in = openFile(profFilePath);
 		
@@ -112,18 +113,13 @@ public class FileReader {
 			String[] recArray = record.split(",");
 
 			if (recArray[0].equalsIgnoreCase(username)) {
-				if (recArray[1].equals(password)) {
-					closeFile(m_in);
-					return true;
-
-				} else
-					closeFile(m_in);
-					return false;
+				closeFile(m_in);
+				return recArray[1];
 			}
 
 		}
 		closeFile(m_in);
-		return false;
+		return null;
 
 	}
 

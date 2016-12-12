@@ -45,11 +45,10 @@ public class LoginView extends JPanel {
 				if (e.getSource() == loginBtn){
 					String username = userNameField.getText();
 					String password = String.valueOf(passwordField.getPassword());
-					//System.out.println(username);
-					//System.out.println(password);
 					if(login.loginDetailsCorrect(username, password)){
 						//System.out.println("Correct Password");
-						ContactList contacts = login.getContacts(username);
+						ContactList contacts = ContactList.getContactList
+								(username);
 						Graph graph = login.readUsers(login.getProfiles());
 						Conversations conv = login.getConv();
 						Profile profile = getProfile(username,login.getProfiles());

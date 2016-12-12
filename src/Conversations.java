@@ -6,6 +6,10 @@ public class Conversations {
 	Conversations(ArrayList<Message> messages){
 		this.m_messages = messages;
 	}
+
+	public ArrayList<Message> getMessages(){
+		return m_messages;
+	}
 	
 	public void addNewMessage(Message m){
 		m_messages.add(m);

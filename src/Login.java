@@ -25,8 +25,8 @@ public class Login {
         return fr.readConversations();
 	}
 	
-	public ContactList getContacts(String username) {
-        return fr.readContacts(username);
+	public ContactList getContacts(Profile user) {
+        return fr.readContacts(user);
 		
 	}
 	

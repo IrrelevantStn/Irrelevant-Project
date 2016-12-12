@@ -22,8 +22,7 @@ public class Profile {
 		this.m_profImg = profImg;
 	}
     //Reconstruction of existing Profile (Pregenerated Salt)
-    public Profile(String userName, String password, byte[] salt, String firstName, String lastName, String telephone, Date birthday,String city, Date lastLogin, String profImg) throws
-            NoSuchAlgorithmException, NoSuchProviderException {
+    public Profile(String userName, String password, byte[] salt, String firstName, String lastName, String telephone, Date birthday,String city, Date lastLogin, String profImg) {
 
         this.m_profileId = m_counter++;
         this.m_userName = userName;

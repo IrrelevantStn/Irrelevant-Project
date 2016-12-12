@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
@@ -302,7 +303,7 @@ public class MessagesView extends JFrame {
 	public void getMessage(String selectedItem) {
 
 		for (Message m : conv.getMessages()) {
-			if (m.getSource() == selectedItem) {
+			if (Objects.equals(m.getSource(), selectedItem)) {
 
 				if ((m instanceof TextMessage) == true) {
 					TextMessage msg = (TextMessage) m;
@@ -332,7 +333,7 @@ public class MessagesView extends JFrame {
 
 				}
 
-			} else if (m.getDestination() == selectedItem) {
+			} else if (Objects.equals(m.getDestination(), selectedItem)) {
 
 				if ((m instanceof TextMessage) == true) {
 					TextMessage msg = (TextMessage) m;

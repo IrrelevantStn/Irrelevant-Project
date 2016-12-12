@@ -45,7 +45,7 @@ public class FileReader {
 
 	}
 
-	public ArrayList<Profile> readProfiles() throws NoSuchProviderException, NoSuchAlgorithmException{
+	public ArrayList<Profile> readProfiles() {
 
 		Scanner m_in = openFile(profFilePath);
 		if (null == m_in ) {
@@ -55,14 +55,14 @@ public class FileReader {
 		ArrayList<Profile > profileList = new ArrayList<Profile>();
 		
 		while (m_in.hasNextLine() ) {
-			
-			String user = m_in.nextLine();
-			String[] userArray = user.split(",");
 
-			String firstName = userArray[0];
-			String lastName = userArray[1];
-			String userName = userArray[2];
-			byte[] salt = userArray[3].getBytes();
+            String user = m_in.nextLine();
+            String[] userArray = user.split(",");
+
+            String firstName = userArray[0];
+            String lastName = userArray[1];
+            String userName = userArray[2];
+            byte[] salt = userArray[3].getBytes();
 			String password = userArray[4];
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy" );

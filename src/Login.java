@@ -8,13 +8,11 @@ public class Login {
 	
 	public boolean loginDetailsCorrect(String u, String p){
         //System.out.println("In loginDetails");
-        Encrypt.hashString(p, fr.readSalt(u));
         return Objects.equals(fr.readPassword(u), Encrypt.hashString(p, fr.readSalt(u)));
 	}
 	
 	
-	public ArrayList<Profile> getProfiles() throws NoSuchAlgorithmException,
-			NoSuchProviderException {
+	public ArrayList<Profile> getProfiles() {
 		
 		ArrayList<Profile> profiles = fr.readProfiles();
 		return profiles;

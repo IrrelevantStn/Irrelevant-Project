@@ -6,13 +6,16 @@ import java.security.NoSuchProviderException;
 
 public class Profile {
     //First Generation of Profile
-	public Profile(String userName, String password, String firstName, String lastName, String telephone, Date birthday,String city, Date lastLogin, String profImg) throws
-			NoSuchAlgorithmException, NoSuchProviderException {
+	public Profile(String userName, String password, String firstName, String lastName, String telephone, Date birthday,String city, Date lastLogin, String profImg) {
 
         this.m_profileId = m_counter++;
 		this.m_userName = userName;
 		this.m_password = password;
-		this.m_salt = Encrypt.getSalt();
+        try{
+            this.m_salt = Encrypt.getSalt();
+        } catch(NoSuchProviderException | NoSuchAlgorithmException e){
+            System.out.println("Could not get Salt, check Encrypt.java");
+        }
 		this.m_firstName = firstName;
 		this.m_lastName = lastName;
 		this.m_telephone = telephone;

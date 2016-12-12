@@ -1,5 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class LoginView extends JPanel {
@@ -47,7 +49,11 @@ public class LoginView extends JPanel {
 					//System.out.println(password);
 					if(login.loginDetailsCorrect(username, password)){
 						//System.out.println("Correct Password");
-						MainMenuView main = new MainMenuView();
+						ContactList contacts = login.getContacts(username);
+						Graph graph = login.readUsers(login.getProfiles());
+						Conversations conv = login.getConv();
+						Profile profile = getProfile(username,login.getProfiles());
+						MainMenuView main = new MainMenuView(contacts,graph,conv,profile);
 					}else{
 						//System.out.println("Incorrect Password");
 						errorMessageLbl.setText(ERROR_MESSAGE);
@@ -57,5 +63,16 @@ public class LoginView extends JPanel {
     	});
 		frame.setVisible(true);
     }   
+    
+    
+    public Profile getProfile(String username,ArrayList<Profile> profiles) {
+    	for (Profile p : profiles) {
+    		if (p.getUserName().equals(username)) {
+    			return p;
+    		}
+    	}
+    	
+    	return null;
+    }
+    
 } 
-	

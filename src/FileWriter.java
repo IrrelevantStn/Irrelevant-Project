@@ -116,18 +116,20 @@ public class FileWriter {
 
 		PrintWriter out = openFile(contactsFilePath);
 		
-		for (Profile p : ContactList.getContactList()) {
+		for (Profile p : contacts.getContactList()) {
 
+			/*
 			String isRequest;
 			if (contacts.isRequest() == true) {
 				isRequest = "true";
 			} else
 				isRequest = "false";
 
+			 */
 			String result = "";
-			result += contacts.getProfile().getUsername();
-			result += p.getUsername();
-			result += isRequest;
+			result += contacts.getUser().getElement().getUserName();
+			result += p.getUserName();
+			//result += isRequest;
 
 			out.println(result);
 		}
@@ -174,13 +176,13 @@ public class FileWriter {
 		PrintWriter out = openFile(drawFilePath);
 		
 		String writeLine = "";
-		String filePath = drawing.getFilePath();
-		ArrayList<Profile> prof = drawing.getAuthors();
+		String filePath = drawing.getFileName();
+		ArrayList<String> prof = drawing.getAuthors();
 
 		writeLine += filePath;
 		writeLine += ",";
-		for (Profile p : prof) {
-			writeLine += p.getUsername();
+		for (String p : prof) {
+			writeLine += p;
 			writeLine += ",";
 		}
 

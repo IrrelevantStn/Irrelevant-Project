@@ -1,5 +1,3 @@
-
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -150,9 +148,9 @@ public class FileReader {
 
 	}
 
-	public ContactList readContacts(String username) {
+	public ContactList readContacts(Profile prof) {
 		Scanner m_in = openFile(contactsFilePath);
-		ContactList contacts = new ContactList();
+		ContactList contacts = new ContactList(prof);
 		
 		while(m_in.hasNextLine()) {
 			
@@ -163,8 +161,15 @@ public class FileReader {
             isRequest = Objects.equals(lineArray[2], "true");
 			
 			
-			if (username.equals(lineArray[0])) {
-				contacts.addContact(lineArray[1]);
+			if (prof.getUserName().equals(lineArray[0])) {
+				if(isRequest) {
+					contacts.addContact(lineArray[1]);
+					
+				} else {
+					contacts.addContact(lineArray[1]);
+				}
+				
+				
 			}
 			
 		}

@@ -1,5 +1,3 @@
-
-
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Panel;
@@ -170,7 +168,7 @@ public class RegisterView extends JFrame {
 					"Congrats, you have created an account named " +
 			strUserName, "User Registration", JOptionPane.WARNING_MESSAGE);
 			r.createNewUser();
-			new MainMenuView();
+			new LoginView();
 			this.dispose();
 		}
 	}

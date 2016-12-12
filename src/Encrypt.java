@@ -10,8 +10,7 @@ public class Encrypt
         String generatedHash = null;
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            //Hash and get Hashed Bytes
-            byte[] hashBytes = md.digest(passwordToHash.getBytes());
+            md.digest(passwordToHash.getBytes());
             md.update(salt);
             generatedHash = new BigInteger(1, md.digest()).toString(16);
         }
@@ -27,13 +26,9 @@ public class Encrypt
     }
 
     public static byte[] getSalt() throws NoSuchAlgorithmException, NoSuchProviderException {
-        //Always use a SecureRandom generator
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "SUN");
-        //Create array for salt
         byte[] salt = new byte[16];
-        //Get a random salt
         sr.nextBytes(salt);
-        //return salt
         return salt;
     }
 }

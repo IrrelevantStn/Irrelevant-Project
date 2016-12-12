@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 
 public class Profile {
-
+    //First Generation of Profile
 	public Profile(String userName, String password, String firstName, String lastName, String telephone, Date birthday,String city, Date lastLogin, String profImg) throws
 			NoSuchAlgorithmException, NoSuchProviderException {
 
@@ -20,8 +20,24 @@ public class Profile {
 		this.m_city = city;
 		this.m_lastLogin = new Date();
 		this.m_profImg = profImg;
-
 	}
+    //Reconstruction of existing Profile (Pregenerated Salt)
+    public Profile(String userName, String password, byte[] salt, String firstName, String lastName, String telephone, Date birthday,String city, Date lastLogin, String profImg) throws
+            NoSuchAlgorithmException, NoSuchProviderException {
+
+        this.m_profileId = m_counter++;
+        this.m_userName = userName;
+        this.m_password = password;
+        this.m_salt = salt;
+        this.m_firstName = firstName;
+        this.m_lastName = lastName;
+        this.m_telephone = telephone;
+        this.m_birthday = birthday;
+        this.m_city = city;
+        this.m_lastLogin = new Date();
+        this.m_profImg = profImg;
+    }
+
     public int getProfileID() {
         return m_profileId;
     }

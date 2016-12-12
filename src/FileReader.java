@@ -90,9 +90,8 @@ public class FileReader {
 			
 			String profImg = userArray[13];
 			
-			Profile temp = new Profile(	userName, password,
-					firstName, lastName, 
-					telephone, birthday, city,lastLogin,profImg 
+			Profile temp = new Profile(userName, password, salt, firstName,
+					lastName, telephone, birthday, city, lastLogin, profImg
 			);
 			
 //			temp.setLastLogin(lastLogin);
@@ -106,7 +105,6 @@ public class FileReader {
 
 	}
 
-	
 	public String readPassword(String username) {
 
 		Scanner m_in = openFile(profFilePath);
@@ -118,7 +116,7 @@ public class FileReader {
 
 			if (recArray[0].equalsIgnoreCase(username)) {
 				closeFile(m_in);
-				return recArray[1];
+				return recArray[1] + recArray[2];
 			}
 
 		}

@@ -12,9 +12,6 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.*;
 
-
-
-
 public class MainMenuView  {
 	//MainMenuView JPanel
     private JPanel contentPane;
@@ -25,23 +22,28 @@ public class MainMenuView  {
     private JButton drawingBtn;
     private JButton logoutBtn;
     
+    private Graph graph;
+    private ContactList contacts;
+    private Conversations conversations;
+    private Profile profile;
+    
+    
     BtnHandler handler;
     
     private JFrame name;
 
-	//private static final int WIDTH = 500;
-    
-    
-    public static void main(String[] args) {
-    	MainMenuView main = new MainMenuView(); 
-    }
-    
-	
 	/**
 	 * Create the frame.
 	 */
-    public MainMenuView(){
-		name = new JFrame();
+    public MainMenuView(ContactList contacts,Graph users,Conversations conv,Profile profile){
+		
+    	this.contacts = contacts;
+    	this.graph = users;
+    	this.conversations = conv;
+    	this.profile = profile;
+    	
+    	
+    	name = new JFrame();
 		name.setBounds(new Rectangle(100, 100, 450, 300));
 		name.getContentPane().setLayout(new BoxLayout(name.getContentPane(),
 				BoxLayout.X_AXIS));
@@ -105,11 +107,6 @@ public class MainMenuView  {
 		logoutBtn.addMouseListener(handler);
     }
     
-    
-    
-    
-    
-    
     private class BtnHandler implements MouseListener,MouseMotionListener {
 		private JFrame frame;
 		
@@ -136,23 +133,17 @@ public class MainMenuView  {
 				//ContactsView view = new ContactsView();
 				System.out.println("Contacts");
 			}else if (e.getSource() == messagesBtn) {
-				//MessagesView view = new MessagesView();
+				MessagesView view = new MessagesView(profile,contacts,conversations);
 				System.out.println("Message");
 			}else if (e.getSource() == profileBtn) {
-<<<<<<< HEAD
-				ProfileView view = new ProfileView(getProfile());
+				ProfileView view = new ProfileView(profile);
 				System.out.println("Profile");
 			}else if (e.getSource() == drawingBtn) {
-				DrawingView view = new DrawingView();
-=======
-				//ProfileView view = new ProfileView(getProfile());
-				System.out.println("Profile");
-			}else if (e.getSource() == drawingBtn) {
-				//DrawingView view = new DrawingView();
->>>>>>> parent of f90d6cb... newest changes
-				System.out.println("Drawing");
+				DrawingView view = new DrawingView(graph,profile);
+				System.out.println("drawing");
 			}else if(e.getSource() == logoutBtn) {
-				//LoginView view = new LoginView();
+				LoginView view = new LoginView();
+				frame.setVisible(false);
 				System.out.println("Logout");
 			}
 			
@@ -180,6 +171,3 @@ public class MainMenuView  {
     
     }
 }
-
-
-

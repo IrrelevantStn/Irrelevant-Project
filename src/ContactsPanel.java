@@ -70,7 +70,7 @@ public class ContactsPanel extends JPanel{
 	
 	public void setScrollPaneTitle(JTextField title){
 		m_ContactListTitle = title;
-		m_ContactListTitle.setBounds(0, 20, 500, 20);
+		m_ContactListTitle.setBounds(0, 20, 400, 20);
 	}
 	
 	public JScrollPane getScrollPane(){
@@ -79,7 +79,7 @@ public class ContactsPanel extends JPanel{
 	
 	public void setScrollPane(JScrollPane contactList){
 		this.m_ContactList = contactList;
-		this.m_ContactList.setBounds(0, 40, 500, 500);
+		this.m_ContactList.setBounds(0, 40, 400, 500);
 	}
 	
 	public ArrayList<JButton> getContacts(){
@@ -106,7 +106,7 @@ public class ContactsPanel extends JPanel{
 	
 	public void setFriendRequestTitle(JTextField title){
 		m_FriendRequestTitle = title;
-		m_FriendRequestTitle.setBounds(0, 540, 500, 20);
+		m_FriendRequestTitle.setBounds(0, 540, 400, 20);
 	}
 	
 	public JScrollPane getFriendRequestScrollPane(){
@@ -115,7 +115,7 @@ public class ContactsPanel extends JPanel{
 	
 	public void setFriendRequestsScrollPane(JScrollPane friendRequests){
 		this.m_FriendRequests = friendRequests;
-		this.m_FriendRequests.setBounds(0, 560, 500, 235);
+		this.m_FriendRequests.setBounds(0, 560, 400, 235);
 	}
 	
 	public ArrayList<JTextField> getFriendRequests(){
@@ -210,10 +210,10 @@ public class ContactsPanel extends JPanel{
 		
 		
 		Date date = new Date();
-		Profile a = new Profile("aaa","Adam","Adam","Thomas","2342",date,"London");
-		Profile b = new Profile("bbb","Bob","Bob","Thomas","34523",date,"Swansea");
-		Profile cc = new Profile("ccc","Clara","Clara","Smith","65323",date,"Swansea");
-		Profile d = new Profile("ddd","David","David","Smith","7627",date,"London");
+		Profile a = new Profile("aaa","Adam","Adam","Thomas","2342",date,"London",date,"profImg");
+		Profile b = new Profile("bbb","Bob","Bob","Thomas","34523",date,"Swansea",date,"profImg");
+		Profile cc = new Profile("ccc","Clara","Clara","Smith","65323",date,"Swansea",date,"profImg");
+		Profile d = new Profile("ddd","David","David","Smith","7627",date,"London",date,"profImg");
 		Graph.addProfile(a);
 		Graph.addProfile(b);
 		Graph.addProfile(cc);
